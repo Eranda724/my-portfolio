@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eranda Jayasinghe - AI Engineer</title>
-    
+
     <!-- Preconnect for faster font loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Animation Libraries -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.0/dist/progressbar.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js" defer></script>
-    
+
     <!-- External CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    
+
     <!-- Preload critical fonts -->
-    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2" as="font" type="font/woff2" crossorigin>
-    
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2"
+        as="font" type="font/woff2" crossorigin>
+
     <!-- Custom Styles -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=2">
 </head>
 
 <body>
@@ -32,96 +34,120 @@
     <div class="preloader">
         <div class="loader"></div>
     </div>
-    
+
     <!-- Background Animation -->
     <div class="animated-bg"></div>
-    
+
     <!-- Particles Background -->
     <div id="particles-js" class="particles-container"></div>
-    
+
     <!-- Navigation -->
     <nav class="nav-container fixed w-full z-50 transition-all duration-300">
         <div class="nav-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="nav-inner flex justify-between items-center h-16 lg:h-20">
                 <!-- Logo -->
                 <div class="nav-logo flex-shrink-0">
-                    <a href="#" class="logo-text text-2xl lg:text-3xl font-bold text-gradient hover:scale-105 transition-transform duration-300">
-                        Eranda
+                    <a href="#"
+                        class="logo-text text-2xl lg:text-3xl font-bold text-white hover:scale-105 transition-transform duration-300">
+                        Hi Welcome to my Profile
                     </a>
                 </div>
-                
+
                 <!-- Desktop Navigation -->
                 <div class="hidden lg:flex nav-links-container">
                     <div class="nav-links flex items-center space-x-1">
-                        <a href="#about" class="nav-link px-4 py-2 rounded-lg text-white hover:text-[var(--primary-color)] transition-all duration-300 relative">About</a>
-                        <a href="#skills" class="nav-link px-4 py-2 rounded-lg text-white hover:text-[var(--primary-color)] transition-all duration-300 relative">Skills</a>
-                        <a href="#projects" class="nav-link px-4 py-2 rounded-lg text-white hover:text-[var(--primary-color)] transition-all duration-300 relative">Projects</a>
-                        <a href="#certifications" class="nav-link px-4 py-2 rounded-lg text-white hover:text-[var(--primary-color)] transition-all duration-300 relative">Certifications</a>
-                        <a href="#awards" class="nav-link px-4 py-2 rounded-lg text-white hover:text-[var(--primary-color)] transition-all duration-300 relative">Awards</a>
-                        <a href="#contact" class="nav-link px-4 py-2 rounded-lg text-white hover:text-[var(--primary-color)] transition-all duration-300 relative">Contact</a>
+                        <a href="#about"
+                            class="nav-link px-4 py-2 rounded-lg text-white hover:text-[var(--primary-color)] transition-all duration-300 relative">About</a>
+                        <a href="#skills"
+                            class="nav-link px-4 py-2 rounded-lg text-white hover:text-[var(--primary-color)] transition-all duration-300 relative">Skills</a>
+                        <a href="#projects"
+                            class="nav-link px-4 py-2 rounded-lg text-white hover:text-[var(--primary-color)] transition-all duration-300 relative">Projects</a>
+                        <a href="#certifications"
+                            class="nav-link px-4 py-2 rounded-lg text-white hover:text-[var(--primary-color)] transition-all duration-300 relative">Certifications</a>
+                        <a href="#awards"
+                            class="nav-link px-4 py-2 rounded-lg text-white hover:text-[var(--primary-color)] transition-all duration-300 relative">Awards</a>
+                        <a href="#contact"
+                            class="nav-link px-4 py-2 rounded-lg text-white hover:text-[var(--primary-color)] transition-all duration-300 relative">Contact</a>
                     </div>
                 </div>
-                
+
                 <!-- Mobile menu button -->
                 <div class="lg:hidden">
-                    <button class="mobile-menu-button p-2 rounded-lg text-white hover:text-[var(--primary-color)] hover:bg-white hover:bg-opacity-10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] focus:ring-opacity-50">
+                    <button
+                        class="mobile-menu-button p-2 rounded-lg text-white hover:text-[var(--primary-color)] hover:bg-white hover:bg-opacity-10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] focus:ring-opacity-50">
                         <span class="sr-only">Open main menu</span>
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
             </div>
         </div>
-        
+
         <!-- Navigation progress bar -->
-        <div class="nav-progress absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] transition-all duration-100"></div>
+        <div
+            class="nav-progress absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] transition-all duration-100">
+        </div>
     </nav>
 
     <!-- Mobile Navigation Menu -->
-    <div class="mobile-menu fixed inset-0 z-40 lg:hidden transform translate-x-full transition-transform duration-300 ease-in-out">
+    <div class="mobile-menu fixed inset-0 z-40 lg:hidden">
         <!-- Backdrop -->
         <div class="mobile-menu-backdrop absolute inset-0 bg-black bg-opacity-90 backdrop-blur-sm"></div>
-        
+
         <!-- Menu Panel -->
-        <div class="mobile-menu-panel relative ml-auto h-full w-full max-w-sm bg-gray-900 bg-opacity-95 backdrop-blur-md shadow-xl">
+        <div
+            class="mobile-menu-panel relative ml-auto h-full w-full max-w-sm bg-gray-900 bg-opacity-95 backdrop-blur-md shadow-xl">
             <!-- Header -->
             <div class="mobile-menu-header flex items-center justify-between p-6 border-b border-gray-700">
                 <div class="text-xl font-bold text-gradient">Menu</div>
-                <button class="mobile-menu-close p-2 rounded-lg text-white hover:text-[var(--primary-color)] hover:bg-white hover:bg-opacity-10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] focus:ring-opacity-50">
+                <button
+                    class="mobile-menu-close p-2 rounded-lg text-white hover:text-[var(--primary-color)] hover:bg-white hover:bg-opacity-10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] focus:ring-opacity-50">
                     <span class="sr-only">Close menu</span>
                     <i class="fas fa-times text-xl"></i>
                 </button>
             </div>
-            
+
             <!-- Navigation Links -->
             <nav class="mobile-menu-nav p-6">
                 <div class="space-y-1 stagger-container">
-                    <a href="#about" class="mobile-nav-link stagger-item flex items-center px-4 py-3 text-lg font-medium text-white hover:text-[var(--primary-color)] hover:bg-white hover:bg-opacity-10 rounded-lg transition-all duration-300 group">
-                        <i class="fas fa-user mr-3 text-[var(--primary-color)] group-hover:scale-110 transition-transform duration-300"></i>
+                    <a href="#about"
+                        class="mobile-nav-link stagger-item flex items-center px-4 py-3 text-lg font-medium text-white hover:text-[var(--primary-color)] hover:bg-white hover:bg-opacity-10 rounded-lg transition-all duration-300 group">
+                        <i
+                            class="fas fa-user mr-3 text-[var(--primary-color)] group-hover:scale-110 transition-transform duration-300"></i>
                         About
                     </a>
-                    <a href="#skills" class="mobile-nav-link stagger-item flex items-center px-4 py-3 text-lg font-medium text-white hover:text-[var(--primary-color)] hover:bg-white hover:bg-opacity-10 rounded-lg transition-all duration-300 group">
-                        <i class="fas fa-code mr-3 text-[var(--primary-color)] group-hover:scale-110 transition-transform duration-300"></i>
+                    <a href="#skills"
+                        class="mobile-nav-link stagger-item flex items-center px-4 py-3 text-lg font-medium text-white hover:text-[var(--primary-color)] hover:bg-white hover:bg-opacity-10 rounded-lg transition-all duration-300 group">
+                        <i
+                            class="fas fa-code mr-3 text-[var(--primary-color)] group-hover:scale-110 transition-transform duration-300"></i>
                         Skills
                     </a>
-                    <a href="#projects" class="mobile-nav-link stagger-item flex items-center px-4 py-3 text-lg font-medium text-white hover:text-[var(--primary-color)] hover:bg-white hover:bg-opacity-10 rounded-lg transition-all duration-300 group">
-                        <i class="fas fa-folder-open mr-3 text-[var(--primary-color)] group-hover:scale-110 transition-transform duration-300"></i>
+                    <a href="#projects"
+                        class="mobile-nav-link stagger-item flex items-center px-4 py-3 text-lg font-medium text-white hover:text-[var(--primary-color)] hover:bg-white hover:bg-opacity-10 rounded-lg transition-all duration-300 group">
+                        <i
+                            class="fas fa-folder-open mr-3 text-[var(--primary-color)] group-hover:scale-110 transition-transform duration-300"></i>
                         Projects
                     </a>
-                    <a href="#certifications" class="mobile-nav-link stagger-item flex items-center px-4 py-3 text-lg font-medium text-white hover:text-[var(--primary-color)] hover:bg-white hover:bg-opacity-10 rounded-lg transition-all duration-300 group">
-                        <i class="fas fa-certificate mr-3 text-[var(--primary-color)] group-hover:scale-110 transition-transform duration-300"></i>
+                    <a href="#certifications"
+                        class="mobile-nav-link stagger-item flex items-center px-4 py-3 text-lg font-medium text-white hover:text-[var(--primary-color)] hover:bg-white hover:bg-opacity-10 rounded-lg transition-all duration-300 group">
+                        <i
+                            class="fas fa-certificate mr-3 text-[var(--primary-color)] group-hover:scale-110 transition-transform duration-300"></i>
                         Certifications
                     </a>
-                    <a href="#awards" class="mobile-nav-link stagger-item flex items-center px-4 py-3 text-lg font-medium text-white hover:text-[var(--primary-color)] hover:bg-white hover:bg-opacity-10 rounded-lg transition-all duration-300 group">
-                        <i class="fas fa-trophy mr-3 text-[var(--primary-color)] group-hover:scale-110 transition-transform duration-300"></i>
+                    <a href="#awards"
+                        class="mobile-nav-link stagger-item flex items-center px-4 py-3 text-lg font-medium text-white hover:text-[var(--primary-color)] hover:bg-white hover:bg-opacity-10 rounded-lg transition-all duration-300 group">
+                        <i
+                            class="fas fa-trophy mr-3 text-[var(--primary-color)] group-hover:scale-110 transition-transform duration-300"></i>
                         Awards
                     </a>
-                    <a href="#contact" class="mobile-nav-link stagger-item flex items-center px-4 py-3 text-lg font-medium text-white hover:text-[var(--primary-color)] hover:bg-white hover:bg-opacity-10 rounded-lg transition-all duration-300 group">
-                        <i class="fas fa-envelope mr-3 text-[var(--primary-color)] group-hover:scale-110 transition-transform duration-300"></i>
+                    <a href="#contact"
+                        class="mobile-nav-link stagger-item flex items-center px-4 py-3 text-lg font-medium text-white hover:text-[var(--primary-color)] hover:bg-white hover:bg-opacity-10 rounded-lg transition-all duration-300 group">
+                        <i
+                            class="fas fa-envelope mr-3 text-[var(--primary-color)] group-hover:scale-110 transition-transform duration-300"></i>
                         Contact
                     </a>
                 </div>
             </nav>
-            
+
             <!-- Footer -->
             <div class="mobile-menu-footer absolute bottom-0 left-0 right-0 p-6 border-t border-gray-700">
                 <div class="text-center text-sm text-gray-400">
@@ -132,34 +158,57 @@
     </div>
 
     <!-- Hero Section -->
-    <header class="hero-gradient pt-32 pb-24 parallax">
+    <header class="hero-gradient pt-32 pb-24 parallax overflow-hidden">
         <div class="parallax-bg" data-speed="0.5"></div>
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row items-center hero-flex">
-                <div class="md:w-1/2 mb-12 md:mb-0 hero-text-col" data-aos="fade-right">
-                    <div class="typewriter mb-6">
-                        <h1 class="hero-title font-bold text-gradient">Hi, I'm Eranda Jayasinghe</h1>
+
+        <!-- Background Scrolling Text -->
+        <div class="hero-bg-text-container" aria-hidden="true">
+            <div class="hero-bg-text">
+                AI SOFTWARE ENGINEER &nbsp; AI SOFTWARE ENGINEER &nbsp; AI SOFTWARE ENGINEER &nbsp; AI SOFTWARE ENGINEER
+                &nbsp;
+            </div>
+            <div class="hero-bg-text">
+                AI SOFTWARE ENGINEER &nbsp; AI SOFTWARE ENGINEER &nbsp; AI SOFTWARE ENGINEER &nbsp; AI SOFTWARE ENGINEER
+                &nbsp;
+            </div>
+        </div>
+
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="flex flex-col items-center text-center hero-flex pt-12">
+                <!-- Profile Image + Name Overlay at the Top -->
+                <div class="mb-16 relative" data-aos="fade-down">
+                    <div class="profile-image-container tilt-element mx-auto">
+                        <div class="profile-bg"></div>
+                        <img src="pic.png" alt="Eranda Jayasinghe" class="profile-image">
+                        <!-- Name Overlay 'on' it -->
+                        <div class="name-overlay">
+                            <h1 class="hero-title font-bold text-gradient mb-0">Eranda Jayasinghe</h1>
+                        </div>
                     </div>
-                    <p class="text-2xl md:text-3xl mb-6 text-[var(--primary-color)]" data-aos="fade-up" data-aos-delay="200">Looking for AI and Machine Learning Engineer Role</p>
-                    <p class="text-gray-300 mb-8 leading-relaxed text-lg" data-aos="fade-up" data-aos-delay="300">
-                        Final-year Computer Engineering undergraduate specializing in Computer Science Engineering, passionate and got hands on experience in AI, Machine Learning, and Generative AI. 
-                        Experienced in building real-world ML, AI and NLP projects, including sentiment analysis, chatbots, and image classification. 
-                        Skilled in Python, PyTorch, LangChain, OpenAI API, and cloud tools like AWS Bedrock and Azure AI. 
-                        Passionate about continuous learning, with 20+ certifications and an active GitHub portfolio of AI-driven solutions.
+                </div>
+
+                <!-- Bio Text centered below -->
+                <div class="w-full hero-text-col" data-aos="fade-up">
+                    <p class="text-2xl md:text-3xl mb-6 text-[var(--primary-color)]" data-aos="fade-up"
+                        data-aos-delay="200">Looking for AI and Machine Learning Engineer Role</p>
+                    <p class="text-gray-300 mb-8 leading-relaxed text-lg max-w-3xl mx-auto" data-aos="fade-up"
+                        data-aos-delay="300">
+                        Final-year Computer Engineering undergraduate specializing in Computer Science Engineering,
+                        passionate and got hands on experience in AI, Machine Learning, and Generative AI.
+                        Experienced in building real-world ML, AI and NLP projects, including sentiment analysis,
+                        chatbots, and image classification.
+                        Skilled in Python, PyTorch, LangChain, OpenAI API, and cloud tools like AWS Bedrock and Azure
+                        AI.
+                        Passionate about continuous learning, with 20+ certifications and an active GitHub portfolio of
+                        AI-driven solutions.
                     </p>
-                    <div class="flex space-x-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="flex justify-center space-x-4" data-aos="fade-up" data-aos-delay="400">
                         <a href="#contact" class="btn-primary magnetic-btn">
                             Contact Me
                         </a>
                         <a href="#projects" class="btn-outline magnetic-btn">
                             View Projects
                         </a>
-                    </div>
-                </div>
-                <div class="md:w-1/2 flex justify-center" data-aos="fade-left" data-aos-delay="300">
-                    <div class="profile-image-container tilt-element">
-                        <div class="profile-bg"></div>
-                        <img src="pic.png" alt="Eranda Jayasinghe" class="profile-image">
                     </div>
                 </div>
             </div>
@@ -172,7 +221,8 @@
             <h2 class="section-title" data-aos="fade-up">Education</h2>
             <div class="card card-3d" data-aos="fade-up" data-aos-delay="200">
                 <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
-                    <h3 class="text-2xl font-semibold text-[var(--primary-color)]">BSc. Engineering (Hons.) in Computer Engineering</h3>
+                    <h3 class="text-2xl font-semibold text-[var(--primary-color)]">BSc. Engineering (Hons.) in Computer
+                        Engineering</h3>
                     <span class="text-gray-400 mt-2 md:mt-0">April 2022 - Present</span>
                 </div>
                 <h4 class="text-xl text-white">University of Jaffna</h4>
@@ -193,10 +243,14 @@
                     <div class="bg-gray-900 p-6 rounded-lg shadow-lg card-3d">
                         <h3 class="text-xl font-semibold mb-4 text-green-300">Who I Am</h3>
                         <p class="text-gray-300 mb-4 leading-relaxed">
-                            I'm an AI & Machine Learning Engineer with a strong background in computer science, specializing in Generative AI, 
-                            ML automation, and deep learning. I enjoy building intelligent, adaptive systems using Python, TensorFlow, PyTorch, and LLMs.
-                            I also work on full-stack web development with React, Spring Boot, and MySQL—delivering scalable, end-to-end solutions. 
-                            My focus is on creating ethical, efficient, and impactful AI products powered by real-world data and robust backend systems.
+                            I'm an AI & Machine Learning Engineer with a strong background in computer science,
+                            specializing in Generative AI,
+                            ML automation, and deep learning. I enjoy building intelligent, adaptive systems using
+                            Python, TensorFlow, PyTorch, and LLMs.
+                            I also work on full-stack web development with React, Spring Boot, and MySQL—delivering
+                            scalable, end-to-end solutions.
+                            My focus is on creating ethical, efficient, and impactful AI products powered by real-world
+                            data and robust backend systems.
                         </p>
                     </div>
                 </div>
@@ -208,7 +262,8 @@
                             </div>
                             <h4 class="text-lg font-semibold mb-2">AI Development</h4>
                             <p class="text-gray-400">
-                                Designing and deploying generative AI models. Experience in NLP, computer vision (CNNs), LLM and RAG
+                                Designing and deploying generative AI models. Experience in NLP, computer vision (CNNs),
+                                LLM and RAG
                             </p>
                         </div>
                         <div class="bg-gray-900 p-4 rounded-lg stagger-item card-3d">
@@ -217,7 +272,8 @@
                             </div>
                             <h4 class="text-lg font-semibold mb-2">ML Development</h4>
                             <p class="text-gray-400">
-                                Sentiment analysis, image classification, and predictions. Proficient in scikit-learn, Keras, and MLOps practices.
+                                Sentiment analysis, image classification, and predictions. Proficient in scikit-learn,
+                                Keras, and MLOps practices.
                             </p>
                         </div>
                         <div class="bg-gray-900 p-4 rounded-lg stagger-item card-3d">
@@ -226,7 +282,8 @@
                             </div>
                             <h4 class="text-lg font-semibold mb-2">Backend Development</h4>
                             <p class="text-gray-400">
-                                Deploying AI/ML models as flask and streamlit. Got experience with AWS (Bedrock, SageMaker) and Azure.
+                                Deploying AI/ML models as flask and streamlit. Got experience with AWS (Bedrock,
+                                SageMaker) and Azure.
                             </p>
                         </div>
                         <div class="bg-gray-900 p-4 rounded-lg stagger-item card-3d">
@@ -235,7 +292,8 @@
                             </div>
                             <h4 class="text-lg font-semibold mb-2">Cloud Practitioner</h4>
                             <p class="text-gray-400">
-                                Backend developing with SpringBoot and PHP using MySQL. Integrating frontend with HTML, CSS, and React.
+                                Backend developing with SpringBoot and PHP using MySQL. Integrating frontend with HTML,
+                                CSS, and React.
                             </p>
                         </div>
                     </div>
@@ -252,44 +310,52 @@
             <h2 class="section-title" data-aos="fade-up">
                 Skills & <span class="text-green-300">Tools</span>
             </h2>
-            
+
             <div class="mb-12" data-aos="fade-up">
                 <h3 class="text-xl font-semibold mb-6 text-green-300">Core Technologies</h3>
-                
+
                 <!-- AI/ML Technologies -->
                 <h4 class="text-xl font-semibold mb-6 text-green-300">AI/ML Technologies</h4>
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-4 mb-8 stagger-container">
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item" data-aos="fade-up" data-aos-delay="100">
+                <div
+                    class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-4 mb-8 stagger-container">
+                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
+                        data-aos="fade-up" data-aos-delay="100">
                         <i class="fab fa-python text-4xl mb-2 text-blue-400"></i>
                         <p>Python</p>
                         <div class="skill-circle mt-2" data-value="0.95"></div>
                     </div>
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item" data-aos="fade-up" data-aos-delay="150">
+                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
+                        data-aos="fade-up" data-aos-delay="150">
                         <i class="fas fa-fire text-4xl mb-2 text-orange-500"></i>
                         <p>PyTorch</p>
                         <div class="skill-circle mt-2" data-value="0.85"></div>
                     </div>
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
+                        data-aos="fade-up" data-aos-delay="200">
                         <i class="fas fa-link text-4xl mb-2 text-purple-400"></i>
                         <p>LangChain</p>
                         <div class="skill-circle mt-2" data-value="0.8"></div>
                     </div>
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item" data-aos="fade-up" data-aos-delay="250">
+                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
+                        data-aos="fade-up" data-aos-delay="250">
                         <i class="fas fa-robot text-4xl mb-2 text-blue-500"></i>
                         <p>OpenAI API</p>
                         <div class="skill-circle mt-2" data-value="0.9"></div>
                     </div>
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
+                        data-aos="fade-up" data-aos-delay="300">
                         <i class="fas fa-brain text-4xl mb-2 text-yellow-500"></i>
                         <p>LLaMA</p>
                         <div class="skill-circle mt-2" data-value="0.75"></div>
                     </div>
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item" data-aos="fade-up" data-aos-delay="350">
+                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
+                        data-aos="fade-up" data-aos-delay="350">
                         <i class="fas fa-database text-4xl mb-2 text-green-400"></i>
                         <p>RAG</p>
                         <div class="skill-circle mt-2" data-value="0.85"></div>
                     </div>
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
+                        data-aos="fade-up" data-aos-delay="400">
                         <i class="fas fa-layer-group text-4xl mb-2 text-red-400"></i>
                         <p>Keras</p>
                         <div class="skill-circle mt-2" data-value="0.8"></div>
@@ -299,32 +365,38 @@
                 <!-- Web Development -->
                 <h4 class="text-xl font-semibold mb-6 text-green-300">Web Development</h4>
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-8 stagger-container">
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
+                        data-aos="fade-up" data-aos-delay="100">
                         <i class="fab fa-react text-4xl mb-2 text-blue-400"></i>
                         <p>React</p>
                         <div class="skill-circle mt-2" data-value="0.8"></div>
                     </div>
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item" data-aos="fade-up" data-aos-delay="150">
+                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
+                        data-aos="fade-up" data-aos-delay="150">
                         <i class="fab fa-html5 text-4xl mb-2 text-orange-500"></i>
                         <p>HTML</p>
                         <div class="skill-circle mt-2" data-value="0.9"></div>
                     </div>
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
+                        data-aos="fade-up" data-aos-delay="200">
                         <i class="fab fa-css3-alt text-4xl mb-2 text-blue-500"></i>
                         <p>CSS</p>
                         <div class="skill-circle mt-2" data-value="0.85"></div>
                     </div>
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item" data-aos="fade-up" data-aos-delay="250">
+                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
+                        data-aos="fade-up" data-aos-delay="250">
                         <i class="fas fa-leaf text-4xl mb-2 text-green-500"></i>
                         <p>Spring Boot</p>
                         <div class="skill-circle mt-2" data-value="0.75"></div>
                     </div>
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
+                        data-aos="fade-up" data-aos-delay="300">
                         <i class="fab fa-php text-4xl mb-2 text-purple-400"></i>
                         <p>PHP</p>
                         <div class="skill-circle mt-2" data-value="0.7"></div>
                     </div>
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item" data-aos="fade-up" data-aos-delay="350">
+                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
+                        data-aos="fade-up" data-aos-delay="350">
                         <i class="fas fa-database text-4xl mb-2 text-blue-400"></i>
                         <p>MySQL</p>
                         <div class="skill-circle mt-2" data-value="0.8"></div>
@@ -334,17 +406,20 @@
                 <!-- Cloud & Backend -->
                 <h4 class="text-xl font-semibold mb-6 text-green-300">Cloud & Backend</h4>
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 stagger-container">
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
+                        data-aos="fade-up" data-aos-delay="100">
                         <i class="fas fa-flask text-4xl mb-2 text-green-400"></i>
                         <p>Flask</p>
                         <div class="skill-circle mt-2" data-value="0.85"></div>
                     </div>
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item" data-aos="fade-up" data-aos-delay="150">
+                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
+                        data-aos="fade-up" data-aos-delay="150">
                         <i class="fab fa-aws text-4xl mb-2 text-yellow-400"></i>
                         <p>AWS</p>
                         <div class="skill-circle mt-2" data-value="0.8"></div>
                     </div>
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
+                        data-aos="fade-up" data-aos-delay="200">
                         <i class="fab fa-microsoft text-4xl mb-2 text-blue-500"></i>
                         <p>Azure</p>
                         <div class="skill-circle mt-2" data-value="0.75"></div>
@@ -376,17 +451,21 @@
             <h2 class="section-title" data-aos="fade-up">
                 Featured <span class="text-green-300">Projects</span>
             </h2>
-            
+
             <!-- AI and ML Projects -->
             <h4 class="text-xl font-semibold mb-6 text-green-300" data-aos="fade-up">AI and ML</h4>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Project 1 -->
-                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d" data-aos="fade-up"
+                    data-aos-delay="100">
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-green-300">Plant Leaf Detection and Disease Recognition System</h3>
+                        <h3 class="text-xl font-semibold mb-2 text-green-300">Plant Leaf Detection and Disease
+                            Recognition System</h3>
                         <p class="text-gray-300 mb-4">
-                            Real-time detection system using YOLOv5 for plant leaf detection and TensorFlow for disease classification. 
-                            Features a multi-page Streamlit interface with dataset overview, manual prediction, and live camera-based recognition.
+                            Real-time detection system using YOLOv5 for plant leaf detection and TensorFlow for disease
+                            classification.
+                            Features a multi-page Streamlit interface with dataset overview, manual prediction, and live
+                            camera-based recognition.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Python</span>
@@ -395,20 +474,24 @@
                             <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Streamlit</span>
                         </div>
                         <div class="flex space-x-4">
-                            <a href="https://github.com/Eranda724/Plant-Disease-Detection-System" class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
+                            <a href="https://github.com/Eranda724/Plant-Disease-Detection-System"
+                                class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
                                 <i class="fab fa-github text-xl"></i>
                             </a>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Project 2 -->
-                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d" data-aos="fade-up"
+                    data-aos-delay="200">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2 text-green-300">English SpellChecker FlaskApp</h3>
                         <p class="text-gray-300 mb-4">
-                            Corpus-based auto-correction tool using the Leipzig English dataset. Implements edit distance algorithm 
-                            for word suggestions and features a lightweight Flask web interface for real-time corrections.
+                            Corpus-based auto-correction tool using the Leipzig English dataset. Implements edit
+                            distance algorithm
+                            for word suggestions and features a lightweight Flask web interface for real-time
+                            corrections.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Python</span>
@@ -418,7 +501,8 @@
                             <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Transformers</span>
                         </div>
                         <div class="flex space-x-4">
-                            <a href="https://github.com/Eranda724/Developing-Auto-Correct-Sinhala" class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
+                            <a href="https://github.com/Eranda724/Developing-Auto-Correct-Sinhala"
+                                class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
                                 <i class="fab fa-github text-xl"></i>
                             </a>
                         </div>
@@ -426,12 +510,14 @@
                 </div>
 
                 <!-- Project 3 -->
-                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d" data-aos="fade-up" data-aos-delay="300">
+                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d" data-aos="fade-up"
+                    data-aos-delay="300">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2 text-green-300">Local RAG PDF Chatbot</h3>
                         <p class="text-gray-300 mb-4">
-                            Built a local RAG pipeline using LangChain and Ollama for PDF document interaction. 
-                            Features context-aware summaries and secure local document handling without internet dependency.
+                            Built a local RAG pipeline using LangChain and Ollama for PDF document interaction.
+                            Features context-aware summaries and secure local document handling without internet
+                            dependency.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Python</span>
@@ -440,7 +526,8 @@
                             <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Chroma</span>
                         </div>
                         <div class="flex space-x-4">
-                            <a href="https://github.com/Eranda724/LLM-RAG-model-Pdf-ChatBot" class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
+                            <a href="https://github.com/Eranda724/LLM-RAG-model-Pdf-ChatBot"
+                                class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
                                 <i class="fab fa-github text-xl"></i>
                             </a>
                         </div>
@@ -448,11 +535,13 @@
                 </div>
 
                 <!-- Project 4 -->
-                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d" data-aos="fade-up" data-aos-delay="400">
+                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d" data-aos="fade-up"
+                    data-aos-delay="400">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2 text-green-300">AI Chatbot for Attendance Management</h3>
                         <p class="text-gray-300 mb-4">
-                            AI-powered chatbot using Flask and PyTorch with custom intent training. Implements NLP features 
+                            AI-powered chatbot using Flask and PyTorch with custom intent training. Implements NLP
+                            features
                             including tokenization and stemming, with a RESTful API and clean frontend integration.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
@@ -462,21 +551,25 @@
                             <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">NLP</span>
                         </div>
                         <div class="flex space-x-4">
-                            <a href="https://github.com/Eranda724/Ai-ChatBot-for-Attendance-Management-System-website" class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
-                
-<i class="fab fa-github text-xl"></i>
+                            <a href="https://github.com/Eranda724/Ai-ChatBot-for-Attendance-Management-System-website"
+                                class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
+
+                                <i class="fab fa-github text-xl"></i>
                             </a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project 5 -->
-                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d" data-aos="fade-up" data-aos-delay="500">
+                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d" data-aos="fade-up"
+                    data-aos-delay="500">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2 text-green-300">CNN-LSTM Image Caption Generator</h3>
                         <p class="text-gray-300 mb-4">
-                            Image captioning model using ResNet101 and LSTM on the Flickr8k dataset. Features teacher forcing, 
-                            greedy decoding, and comprehensive Jupyter workflow with loss tracking and model checkpointing.
+                            Image captioning model using ResNet101 and LSTM on the Flickr8k dataset. Features teacher
+                            forcing,
+                            greedy decoding, and comprehensive Jupyter workflow with loss tracking and model
+                            checkpointing.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Python</span>
@@ -485,7 +578,8 @@
                             <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">LSTM</span>
                         </div>
                         <div class="flex space-x-4">
-                            <a href="https://github.com/Eranda724/CNN-LSTM-Image-Caption-Generator" class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
+                            <a href="https://github.com/Eranda724/CNN-LSTM-Image-Caption-Generator"
+                                class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
                                 <i class="fab fa-github text-xl"></i>
                             </a>
                         </div>
@@ -497,11 +591,13 @@
             <h4 class="text-xl font-semibold mb-6 mt-12 text-green-300" data-aos="fade-up">Web Development</h4>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Project 1 -->
-                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d" data-aos="fade-up"
+                    data-aos-delay="100">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2 text-green-300">Student Attendance Management System</h3>
                         <p class="text-gray-300 mb-4">
-                            A comprehensive web-based system for managing student attendance, courses, and lectures. Features include 
+                            A comprehensive web-based system for managing student attendance, courses, and lectures.
+                            Features include
                             course management, attendance tracking, report generation, and secure authentication.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
@@ -511,7 +607,8 @@
                             <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">MySQL</span>
                         </div>
                         <div class="flex space-x-4">
-                            <a href="https://github.com/Eranda724/Student-Attendence-Management-System" class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
+                            <a href="https://github.com/Eranda724/Student-Attendence-Management-System"
+                                class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
                                 <i class="fab fa-github text-xl"></i>
                             </a>
                         </div>
@@ -519,11 +616,13 @@
                 </div>
 
                 <!-- Project 2 -->
-                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d" data-aos="fade-up"
+                    data-aos-delay="200">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2 text-green-300">Real-Time Video Conferencing App</h3>
                         <p class="text-gray-300 mb-4">
-                            A feature-rich video conferencing application built with WebRTC and Socket.IO. Includes multi-user video chat, 
+                            A feature-rich video conferencing application built with WebRTC and Socket.IO. Includes
+                            multi-user video chat,
                             screen sharing, text chat, and responsive design for seamless cross-device experience.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
@@ -533,10 +632,12 @@
                             <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Express.js</span>
                         </div>
                         <div class="flex space-x-4">
-                            <a href="https://github.com/Eranda724/Real-Time-Video-Conferencing-Application-using-WebRTC" class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
+                            <a href="https://github.com/Eranda724/Real-Time-Video-Conferencing-Application-using-WebRTC"
+                                class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
                                 <i class="fab fa-github text-xl"></i>
                             </a>
-                            <a href="https://lnkd.in/gPZV9KmN" class="text-green-300 hover:text-green-500 transition duration-300">
+                            <a href="https://lnkd.in/gPZV9KmN"
+                                class="text-green-300 hover:text-green-500 transition duration-300">
                                 <i class="fas fa-external-link-alt text-xl"></i>
                             </a>
                         </div>
@@ -544,12 +645,15 @@
                 </div>
 
                 <!-- Project 3 -->
-                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d" data-aos="fade-up" data-aos-delay="300">
+                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d" data-aos="fade-up"
+                    data-aos-delay="300">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2 text-green-300">Bookify Universal Booking System</h3>
                         <p class="text-gray-300 mb-4">
-                            Developed a robust backend booking system using Spring Boot, enabling efficient reservation and management workflows. 
-                            Integrated MySQL for structured data storage and designed RESTful APIs for modular booking operations.
+                            Developed a robust backend booking system using Spring Boot, enabling efficient reservation
+                            and management workflows.
+                            Integrated MySQL for structured data storage and designed RESTful APIs for modular booking
+                            operations.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Spring Boot</span>
@@ -558,16 +662,19 @@
                             <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">REST API</span>
                         </div>
                         <div class="flex space-x-4">
-                            <a href="https://github.com/Eranda724/Bookify-Staging-FullStack" class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
+                            <a href="https://github.com/Eranda724/Bookify-Staging-FullStack"
+                                class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
                                 <i class="fab fa-github text-xl"></i>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <div class="mt-12 text-center" data-aos="fade-up" data-aos-delay="400">
-                <a href="https://github.com/Eranda724" class="px-6 py-3 bg-gray-800 text-green-300 font-semibold rounded hover:bg-gray-700 transition duration-300 magnetic-btn" target="_blank">
+                <a href="https://github.com/Eranda724"
+                    class="px-6 py-3 bg-gray-800 text-green-300 font-semibold rounded hover:bg-gray-700 transition duration-300 magnetic-btn"
+                    target="_blank">
                     View More Projects on GitHub
                 </a>
             </div>
@@ -580,34 +687,66 @@
     <section id="certifications" class="py-16 bg-gray-900 bg-opacity-60">
         <div class="max-w-5xl mx-auto px-4">
             <h2 class="section-title" data-aos="fade-up">
-                Certifications 
-                <a href="https://www.linkedin.com/in/eranda-jayasinghe/details/certifications/" class="text-green-300 underline" target="_blank">(Linkedin)</a>
+                Certifications
+                <a href="https://www.linkedin.com/in/eranda-jayasinghe/details/certifications/"
+                    class="text-green-300 underline" target="_blank">(Linkedin)</a>
             </h2>
             <div class="bg-gray-900 p-8 rounded-lg shadow-lg card-3d" data-aos="fade-up" data-aos-delay="200">
                 <ul class="list-disc list-inside text-gray-300 space-y-4">
-                    <li><strong>Certification Portfolio Summary:</strong> Demonstrates strong expertise in Python, web development, AI/ML, deep learning, generative AI, NLP, and cloud technologies. Completed specializations and hands-on projects in neural networks, computer vision, chatbot development, and prompt engineering, with real-world and domain-specific applications. Credentials span Coursera, DeepLearning.AI, Udemy, Microsoft, and SoloLearn.</li>
-                    <li><strong>Main Specializations:</strong> 
+                    <li><strong>Certification Portfolio Summary:</strong> Demonstrates strong expertise in Python, web
+                        development, AI/ML, deep learning, generative AI, NLP, and cloud technologies. Completed
+                        specializations and hands-on projects in neural networks, computer vision, chatbot development,
+                        and prompt engineering, with real-world and domain-specific applications. Credentials span
+                        Coursera, DeepLearning.AI, Udemy, Microsoft, and SoloLearn.</li>
+                    <li><strong>Main Specializations:</strong>
                         <ul class="ml-6 list-disc">
-                            <li>NLP Specialization: <a href="https://www.coursera.org/account/accomplishments/specialization/HSY9ZVVQV5NR" class="text-green-300 underline" target="_blank">Coursera Certificate</a></li>
-                            <li>Machine Learning Specialization: <a href="https://www.coursera.org/account/accomplishments/specialization/P7NLVZW3WZ82" class="text-green-300 underline" target="_blank">Coursera Certificate</a></li>
-                            <li>Deep Learning Mastery: <a href="https://www.udemy.com/certificate/UC-cb3b0f36-0dd1-467b-bba5-dd0309514bb1/" class="text-green-300 underline" target="_blank">Udemy Certificate</a></li>
-                            <li>LLM Game (DeepLearning.AI): <a href="https://learn.deeplearning.ai/accomplishments/b7b1868c-3295-4d39-af38-2adad560d2ca?usp=sharing" class="text-green-300 underline" target="_blank">DeepLearning.AI Certificate</a></li>
-                            <li>AWS Bedrock: <a href="https://www.udemy.com/certificate/UC-84c80c95-7bae-44f6-b234-f6aee9d9810a/" class="text-green-300 underline" target="_blank">Udemy Certificate</a></li>
+                            <li>NLP Specialization: <a
+                                    href="https://www.coursera.org/account/accomplishments/specialization/HSY9ZVVQV5NR"
+                                    class="text-green-300 underline" target="_blank">Coursera Certificate</a></li>
+                            <li>Machine Learning Specialization: <a
+                                    href="https://www.coursera.org/account/accomplishments/specialization/P7NLVZW3WZ82"
+                                    class="text-green-300 underline" target="_blank">Coursera Certificate</a></li>
+                            <li>Deep Learning Mastery: <a
+                                    href="https://www.udemy.com/certificate/UC-cb3b0f36-0dd1-467b-bba5-dd0309514bb1/"
+                                    class="text-green-300 underline" target="_blank">Udemy Certificate</a></li>
+                            <li>LLM Game (DeepLearning.AI): <a
+                                    href="https://learn.deeplearning.ai/accomplishments/b7b1868c-3295-4d39-af38-2adad560d2ca?usp=sharing"
+                                    class="text-green-300 underline" target="_blank">DeepLearning.AI Certificate</a>
+                            </li>
+                            <li>AWS Bedrock: <a
+                                    href="https://www.udemy.com/certificate/UC-84c80c95-7bae-44f6-b234-f6aee9d9810a/"
+                                    class="text-green-300 underline" target="_blank">Udemy Certificate</a></li>
                         </ul>
                     </li>
-                    <li><strong>Programming & Software Development:</strong> Python (HackerRank, Microsoft), Web Development (Azure, Microsoft Cloud Concepts)</li>
-                    <li><strong>AI, Machine Learning & Deep Learning:</strong> Neural Networks and Deep Learning (DeepLearning.AI), Mastering Machine Learning (Udemy), WhatsApp Chat Sentiment Analysis, Chatbot Using ML from Scratch (TensorFlow & Keras), Self-Driving Car Case Studies (Computer Vision)</li>
-                    <li><strong>Generative AI & Prompt Engineering:</strong> Generative AI for All (Udemy), GenAI 101 with Pieces (Pieces for Developers)</li>
-                    <li><strong>Chatbot & Cloud Integration:</strong> Chatbot Development with Azure AI Foundry, Introduction to Large Language Models (Simplilearn)</li>
-                    <li><strong>Tools & Platforms:</strong> Microsoft Azure (multiple certifications), Visual Studio Code, GitHub, Google Cloud / Microsoft Cloud fundamentals</li>
-                    <li><strong>Other Highlights:</strong> GenAI 101 with Pieces, project-focused computer vision, WhatsApp Chat Sentiment Analysis, Flipkart Review Sentiment & Spam Detection, Chatbot development, heart disease and diabetes detection models, neural networks with Python/TensorFlow/Keras, linear algebra for ML, mini projects (spam detection, neural network dev on GitHub)</li>
-                    <li><strong>Selected Individual Certificates:</strong> 
+                    <li><strong>Programming & Software Development:</strong> Python (HackerRank, Microsoft), Web
+                        Development (Azure, Microsoft Cloud Concepts)</li>
+                    <li><strong>AI, Machine Learning & Deep Learning:</strong> Neural Networks and Deep Learning
+                        (DeepLearning.AI), Mastering Machine Learning (Udemy), WhatsApp Chat Sentiment Analysis, Chatbot
+                        Using ML from Scratch (TensorFlow & Keras), Self-Driving Car Case Studies (Computer Vision)</li>
+                    <li><strong>Generative AI & Prompt Engineering:</strong> Generative AI for All (Udemy), GenAI 101
+                        with Pieces (Pieces for Developers)</li>
+                    <li><strong>Chatbot & Cloud Integration:</strong> Chatbot Development with Azure AI Foundry,
+                        Introduction to Large Language Models (Simplilearn)</li>
+                    <li><strong>Tools & Platforms:</strong> Microsoft Azure (multiple certifications), Visual Studio
+                        Code, GitHub, Google Cloud / Microsoft Cloud fundamentals</li>
+                    <li><strong>Other Highlights:</strong> GenAI 101 with Pieces, project-focused computer vision,
+                        WhatsApp Chat Sentiment Analysis, Flipkart Review Sentiment & Spam Detection, Chatbot
+                        development, heart disease and diabetes detection models, neural networks with
+                        Python/TensorFlow/Keras, linear algebra for ML, mini projects (spam detection, neural network
+                        dev on GitHub)</li>
+                    <li><strong>Selected Individual Certificates:</strong>
                         <ul class="ml-6 list-disc">
-                            <li>Machine Learning Specialization (DeepLearning.AI, May 2024): Neural Networks, CNNs, Computer Vision, Supervised & Unsupervised Learning, Recommenders, Reinforcement Learning (TensorFlow, Keras)</li>
-                            <li>Python Intermediate (SoloLearn, April 2024): Data structures, control flow, functions</li>
-                            <li>Mathematics for Machine Learning: Linear Algebra (Imperial College London, Coursera, Feb 2024): Matrices, eigenvalues, vector spaces</li>
-                            <li>Java Intermediate (SoloLearn, Dec 2023): Java fundamentals, GUI programming, GitHub projects</li>
-                            <li>MS Office Specialist Certification (SLISEA College, Oct 2021): Word, Excel, PowerPoint</li>
+                            <li>Machine Learning Specialization (DeepLearning.AI, May 2024): Neural Networks, CNNs,
+                                Computer Vision, Supervised & Unsupervised Learning, Recommenders, Reinforcement
+                                Learning (TensorFlow, Keras)</li>
+                            <li>Python Intermediate (SoloLearn, April 2024): Data structures, control flow, functions
+                            </li>
+                            <li>Mathematics for Machine Learning: Linear Algebra (Imperial College London, Coursera, Feb
+                                2024): Matrices, eigenvalues, vector spaces</li>
+                            <li>Java Intermediate (SoloLearn, Dec 2023): Java fundamentals, GUI programming, GitHub
+                                projects</li>
+                            <li>MS Office Specialist Certification (SLISEA College, Oct 2021): Word, Excel, PowerPoint
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -621,7 +760,8 @@
     <section id="awards" class="py-16 bg-gray-900 bg-opacity-60">
         <div class="max-w-5xl mx-auto px-4">
             <h2 class="section-title" data-aos="fade-up">
-                Awards/Activities <a href="https://www.linkedin.com/in/eranda-jayasinghe/details/honors/" class="text-green-300 underline">(Linkedin)</a>
+                Awards/Activities <a href="https://www.linkedin.com/in/eranda-jayasinghe/details/honors/"
+                    class="text-green-300 underline">(Linkedin)</a>
             </h2>
             <div class="bg-gray-900 p-8 rounded-lg shadow-lg card-3d" data-aos="fade-up" data-aos-delay="200">
                 <p class="text-gray-300 leading-relaxed mb-2">
@@ -644,12 +784,18 @@
             <h2 class="section-title" data-aos="fade-up">
                 Contact <span class="text-green-300">Me</span>
             </h2>
-            
+
             <!-- Professional Summary -->
-            <div class="max-w-4xl mx-auto mb-12 bg-gray-900 p-8 rounded-lg shadow-lg card-3d" data-aos="fade-up" data-aos-delay="200">
+            <div class="max-w-4xl mx-auto mb-12 bg-gray-900 p-8 rounded-lg shadow-lg card-3d" data-aos="fade-up"
+                data-aos-delay="200">
                 <h3 class="text-xl font-semibold mb-4 text-green-300">Professional Summary</h3>
                 <p class="text-gray-300 leading-relaxed">
-                    I'm passionate about building real-world AI solutions, especially using NLP, generative AI, and LLMs. With a background in Computer Engineering and hands-on project experience, I focus on creating scalable, cloud-based AI systems using tools like Flask, React, and AWS. I'm particularly interested in full-stack AI development, prompt engineering, and deploying intelligent applications that solve real problems. My goal is to work in roles like ML Engineer or Generative AI Specialist, where I can keep innovating and contribute to impactful, ethical AI products.
+                    I'm passionate about building real-world AI solutions, especially using NLP, generative AI, and
+                    LLMs. With a background in Computer Engineering and hands-on project experience, I focus on creating
+                    scalable, cloud-based AI systems using tools like Flask, React, and AWS. I'm particularly interested
+                    in full-stack AI development, prompt engineering, and deploying intelligent applications that solve
+                    real problems. My goal is to work in roles like ML Engineer or Generative AI Specialist, where I can
+                    keep innovating and contribute to impactful, ethical AI products.
                 </p>
             </div>
 
@@ -660,13 +806,15 @@
                     <div class="space-y-4">
                         <div class="flex items-center space-x-4">
                             <i class="fas fa-envelope text-green-300 text-xl"></i>
-                            <a href="mailto:erandajayasinghe724@gmail.com" class="text-gray-300 hover:text-green-300 transition duration-300">
+                            <a href="mailto:erandajayasinghe724@gmail.com"
+                                class="text-gray-300 hover:text-green-300 transition duration-300">
                                 erandajayasinghe724@gmail.com
                             </a>
                         </div>
                         <div class="flex items-center space-x-4">
                             <i class="fas fa-phone text-green-300 text-xl"></i>
-                            <a href="tel:+94763651754" class="text-gray-300 hover:text-green-300 transition duration-300">
+                            <a href="tel:+94763651754"
+                                class="text-gray-300 hover:text-green-300 transition duration-300">
                                 +94 763651754
                             </a>
                         </div>
@@ -676,19 +824,21 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="bg-gray-900 p-8 rounded-lg shadow-lg card-3d" data-aos="fade-up" data-aos-delay="400">
                     <h3 class="text-xl font-semibold mb-6 text-green-300">Connect With Me</h3>
                     <div class="space-y-4">
                         <div class="flex items-center space-x-4">
                             <i class="fab fa-github text-green-300 text-xl"></i>
-                            <a href="https://github.com/Eranda724" target="_blank" class="text-gray-300 hover:text-green-300 transition duration-300">
+                            <a href="https://github.com/Eranda724" target="_blank"
+                                class="text-gray-300 hover:text-green-300 transition duration-300">
                                 github.com/Eranda724
                             </a>
                         </div>
                         <div class="flex items-center space-x-4">
                             <i class="fab fa-linkedin text-green-300 text-xl"></i>
-                            <a href="https://linkedin.com/in/eranda-jayasinghe" target="_blank" class="text-gray-300 hover:text-green-300 transition duration-300">
+                            <a href="https://linkedin.com/in/eranda-jayasinghe" target="_blank"
+                                class="text-gray-300 hover:text-green-300 transition duration-300">
                                 linkedin.com/in/eranda-jayasinghe
                             </a>
                         </div>
@@ -710,7 +860,7 @@
     <!-- Particles.js for background effect -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" defer></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             if (typeof particlesJS !== 'undefined') {
                 particlesJS("particles-js", {
                     particles: {
@@ -757,4 +907,5 @@
     <!-- Custom JavaScript -->
     <script src="script.js" defer></script>
 </body>
+
 </html>
