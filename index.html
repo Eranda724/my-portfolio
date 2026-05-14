@@ -1,1265 +1,783 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eranda Jayasinghe - AI Engineer</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eranda Jayasinghe – AI & Software Engineer</title>
 
-    <!-- Preconnect for faster font loading -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Animation Libraries -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.0/dist/progressbar.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js" defer></script>
+  <!-- Animation Libraries -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <!-- External CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <!-- Tailwind & Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
-    <!-- Preload critical fonts -->
-    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2"
-        as="font" type="font/woff2" crossorigin>
-
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <!-- Preloader -->
-    <div class="preloader">
-        <div class="loader"></div>
+
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Background -->
+  <div class="animated-bg"></div>
+  <div id="particles-js" class="particles-container"></div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════════════════════ -->
+  <nav class="nav-container fixed w-full z-50">
+    <div class="nav-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="nav-inner flex justify-between items-center h-16 lg:h-20">
+
+        <!-- Logo -->
+        <div class="nav-logo flex-shrink-0">
+          <a href="#" class="logo-text text-2xl lg:text-3xl font-bold">Eranda.dev</a>
+        </div>
+
+        <!-- Desktop Nav -->
+        <div class="hidden lg:flex nav-links-container">
+          <div class="nav-links flex items-center space-x-1">
+            <a href="#experience"      class="nav-link px-4 py-2 rounded-lg text-white">Experience</a>
+            <a href="#about"           class="nav-link px-4 py-2 rounded-lg text-white">About</a>
+            <a href="#skills"          class="nav-link px-4 py-2 rounded-lg text-white">Skills</a>
+            <a href="#projects"        class="nav-link px-4 py-2 rounded-lg text-white">Projects</a>
+            <a href="#certifications"  class="nav-link px-4 py-2 rounded-lg text-white">Certifications</a>
+            <a href="#awards"          class="nav-link px-4 py-2 rounded-lg text-white">Awards</a>
+            <a href="#contact"         class="nav-link px-4 py-2 rounded-lg text-white">Contact</a>
+          </div>
+        </div>
+
+        <!-- Mobile Button -->
+        <div class="lg:hidden">
+          <button class="mobile-menu-button p-2 rounded-lg text-white focus:outline-none">
+            <span class="sr-only">Open menu</span>
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="nav-progress"></div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu fixed inset-0 z-40 lg:hidden">
+    <div class="mobile-menu-backdrop absolute inset-0"></div>
+    <div class="mobile-menu-panel relative ml-auto h-full w-full max-w-sm">
+      <div class="mobile-menu-header flex items-center justify-between p-6 border-b border-gray-700">
+        <div class="text-xl font-bold text-gradient">Menu</div>
+        <button class="mobile-menu-close p-2 rounded-lg text-white focus:outline-none">
+          <i class="fas fa-times text-xl"></i>
+        </button>
+      </div>
+      <nav class="mobile-menu-nav p-6">
+        <div class="space-y-1 stagger-container">
+          <a href="#experience"     class="mobile-nav-link stagger-item flex items-center px-4 py-3 text-lg font-medium text-white rounded-lg group"><i class="fas fa-briefcase    mr-3 text-[var(--primary-color)]"></i>Experience</a>
+          <a href="#about"          class="mobile-nav-link stagger-item flex items-center px-4 py-3 text-lg font-medium text-white rounded-lg group"><i class="fas fa-user         mr-3 text-[var(--primary-color)]"></i>About</a>
+          <a href="#skills"         class="mobile-nav-link stagger-item flex items-center px-4 py-3 text-lg font-medium text-white rounded-lg group"><i class="fas fa-code         mr-3 text-[var(--primary-color)]"></i>Skills</a>
+          <a href="#projects"       class="mobile-nav-link stagger-item flex items-center px-4 py-3 text-lg font-medium text-white rounded-lg group"><i class="fas fa-folder-open  mr-3 text-[var(--primary-color)]"></i>Projects</a>
+          <a href="#certifications" class="mobile-nav-link stagger-item flex items-center px-4 py-3 text-lg font-medium text-white rounded-lg group"><i class="fas fa-certificate  mr-3 text-[var(--primary-color)]"></i>Certifications</a>
+          <a href="#awards"         class="mobile-nav-link stagger-item flex items-center px-4 py-3 text-lg font-medium text-white rounded-lg group"><i class="fas fa-trophy        mr-3 text-[var(--primary-color)]"></i>Awards</a>
+          <a href="#contact"        class="mobile-nav-link stagger-item flex items-center px-4 py-3 text-lg font-medium text-white rounded-lg group"><i class="fas fa-envelope      mr-3 text-[var(--primary-color)]"></i>Contact</a>
+        </div>
+      </nav>
+      <div class="mobile-menu-footer absolute bottom-0 left-0 right-0 p-6 border-t border-gray-700 text-center text-sm text-gray-400">
+        © 2025 Eranda Jayasinghe
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════════════ -->
+  <header class="hero-gradient pt-32 pb-24 parallax overflow-hidden">
+    <div class="parallax-bg" data-speed="0.5"></div>
+
+    <!-- Scrolling background text -->
+    <div class="hero-bg-text-container" aria-hidden="true">
+      <div class="hero-bg-text">AI SOFTWARE ENGINEER &nbsp;&nbsp; FLUTTER DEVELOPER &nbsp;&nbsp; ML ENGINEER &nbsp;&nbsp; AI SOFTWARE ENGINEER &nbsp;&nbsp; FLUTTER DEVELOPER &nbsp;&nbsp; ML ENGINEER &nbsp;&nbsp;</div>
+      <div class="hero-bg-text hero-bg-text--reverse">MACHINE LEARNING &nbsp;&nbsp; FIREBASE &nbsp;&nbsp; GENERATIVE AI &nbsp;&nbsp; DEEP LEARNING &nbsp;&nbsp; MACHINE LEARNING &nbsp;&nbsp; FIREBASE &nbsp;&nbsp; GENERATIVE AI &nbsp;&nbsp;</div>
     </div>
 
-    <!-- Background Animation -->
-    <div class="animated-bg"></div>
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+      <div class="flex flex-col items-center text-center pt-12">
 
-    <!-- Particles Background -->
-    <div id="particles-js" class="particles-container"></div>
-
-    <!-- Navigation -->
-    <nav class="nav-container fixed w-full z-50 transition-all duration-300">
-        <div class="nav-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="nav-inner flex justify-between items-center h-16 lg:h-20">
-                <!-- Logo -->
-                <div class="nav-logo flex-shrink-0">
-                    <a href="#"
-                        class="logo-text text-2xl lg:text-3xl font-bold text-white hover:scale-105 transition-transform duration-300">
-                        Hi Welcome to my Profile
-                    </a>
-                </div>
-
-                <!-- Desktop Navigation -->
-                <div class="hidden lg:flex nav-links-container">
-                    <div class="nav-links flex items-center space-x-1">
-                        <a href="#experience"
-                            class="nav-link px-4 py-2 rounded-lg text-white hover:text-[var(--primary-color)] transition-all duration-300 relative">Experience</a>
-                        <a href="#about"
-                            class="nav-link px-4 py-2 rounded-lg text-white hover:text-[var(--primary-color)] transition-all duration-300 relative">About</a>
-                        <a href="#skills"
-                            class="nav-link px-4 py-2 rounded-lg text-white hover:text-[var(--primary-color)] transition-all duration-300 relative">Skills</a>
-                        <a href="#projects"
-                            class="nav-link px-4 py-2 rounded-lg text-white hover:text-[var(--primary-color)] transition-all duration-300 relative">Projects</a>
-                        <a href="#flutter"
-                            class="nav-link px-4 py-2 rounded-lg text-white hover:text-[var(--primary-color)] transition-all duration-300 relative">Flutter</a>
-                        <a href="#certifications"
-                            class="nav-link px-4 py-2 rounded-lg text-white hover:text-[var(--primary-color)] transition-all duration-300 relative">Certifications</a>
-                        <a href="#awards"
-                            class="nav-link px-4 py-2 rounded-lg text-white hover:text-[var(--primary-color)] transition-all duration-300 relative">Awards</a>
-                        <a href="#contact"
-                            class="nav-link px-4 py-2 rounded-lg text-white hover:text-[var(--primary-color)] transition-all duration-300 relative">Contact</a>
-                    </div>
-                </div>
-
-                <!-- Mobile menu button -->
-                <div class="lg:hidden">
-                    <button
-                        class="mobile-menu-button p-2 rounded-lg text-white hover:text-[var(--primary-color)] hover:bg-white hover:bg-opacity-10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] focus:ring-opacity-50">
-                        <span class="sr-only">Open main menu</span>
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
+        <!-- Profile Image -->
+        <div class="mb-20 relative" data-aos="fade-down">
+          <div class="floating" style="width: fit-content; margin: 0 auto;">
+            <div class="profile-image-container profile-hover">
+            <div class="profile-bg"></div>
+            <img src="pic.png" alt="Eranda Jayasinghe" class="profile-image">
+            <div class="name-overlay">
+              <h1 class="hero-title font-bold text-gradient mb-0">Eranda Jayasinghe</h1>
             </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Navigation progress bar -->
-        <div
-            class="nav-progress absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] transition-all duration-100">
-        </div>
-    </nav>
-
-    <!-- Mobile Navigation Menu -->
-    <div class="mobile-menu fixed inset-0 z-40 lg:hidden">
-        <!-- Backdrop -->
-        <div class="mobile-menu-backdrop absolute inset-0 bg-black bg-opacity-90 backdrop-blur-sm"></div>
-
-        <!-- Menu Panel -->
-        <div
-            class="mobile-menu-panel relative ml-auto h-full w-full max-w-sm bg-gray-900 bg-opacity-95 backdrop-blur-md shadow-xl">
-            <!-- Header -->
-            <div class="mobile-menu-header flex items-center justify-between p-6 border-b border-gray-700">
-                <div class="text-xl font-bold text-gradient">Menu</div>
-                <button
-                    class="mobile-menu-close p-2 rounded-lg text-white hover:text-[var(--primary-color)] hover:bg-white hover:bg-opacity-10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] focus:ring-opacity-50">
-                    <span class="sr-only">Close menu</span>
-                    <i class="fas fa-times text-xl"></i>
-                </button>
-            </div>
-
-            <!-- Navigation Links -->
-            <nav class="mobile-menu-nav p-6">
-                <div class="space-y-1 stagger-container">
-                    <a href="#experience"
-                        class="mobile-nav-link stagger-item flex items-center px-4 py-3 text-lg font-medium text-white hover:text-[var(--primary-color)] hover:bg-white hover:bg-opacity-10 rounded-lg transition-all duration-300 group">
-                        <i
-                            class="fas fa-briefcase mr-3 text-[var(--primary-color)] group-hover:scale-110 transition-transform duration-300"></i>
-                        Experience
-                    </a>
-                    <a href="#about"
-                        class="mobile-nav-link stagger-item flex items-center px-4 py-3 text-lg font-medium text-white hover:text-[var(--primary-color)] hover:bg-white hover:bg-opacity-10 rounded-lg transition-all duration-300 group">
-                        <i
-                            class="fas fa-user mr-3 text-[var(--primary-color)] group-hover:scale-110 transition-transform duration-300"></i>
-                        About
-                    </a>
-                    <a href="#skills"
-                        class="mobile-nav-link stagger-item flex items-center px-4 py-3 text-lg font-medium text-white hover:text-[var(--primary-color)] hover:bg-white hover:bg-opacity-10 rounded-lg transition-all duration-300 group">
-                        <i
-                            class="fas fa-code mr-3 text-[var(--primary-color)] group-hover:scale-110 transition-transform duration-300"></i>
-                        Skills
-                    </a>
-                    <a href="#projects"
-                        class="mobile-nav-link stagger-item flex items-center px-4 py-3 text-lg font-medium text-white hover:text-[var(--primary-color)] hover:bg-white hover:bg-opacity-10 rounded-lg transition-all duration-300 group">
-                        <i
-                            class="fas fa-folder-open mr-3 text-[var(--primary-color)] group-hover:scale-110 transition-transform duration-300"></i>
-                        Projects
-                    </a>
-                    <a href="#flutter"
-                        class="mobile-nav-link stagger-item flex items-center px-4 py-3 text-lg font-medium text-white hover:text-[var(--primary-color)] hover:bg-white hover:bg-opacity-10 rounded-lg transition-all duration-300 group">
-                        <i
-                            class="fas fa-mobile mr-3 text-[var(--primary-color)] group-hover:scale-110 transition-transform duration-300"></i>
-                        Flutter
-                    </a>
-                    <a href="#certifications"
-                        class="mobile-nav-link stagger-item flex items-center px-4 py-3 text-lg font-medium text-white hover:text-[var(--primary-color)] hover:bg-white hover:bg-opacity-10 rounded-lg transition-all duration-300 group">
-                        <i
-                            class="fas fa-certificate mr-3 text-[var(--primary-color)] group-hover:scale-110 transition-transform duration-300"></i>
-                        Certifications
-                    </a>
-                    <a href="#awards"
-                        class="mobile-nav-link stagger-item flex items-center px-4 py-3 text-lg font-medium text-white hover:text-[var(--primary-color)] hover:bg-white hover:bg-opacity-10 rounded-lg transition-all duration-300 group">
-                        <i
-                            class="fas fa-trophy mr-3 text-[var(--primary-color)] group-hover:scale-110 transition-transform duration-300"></i>
-                        Awards
-                    </a>
-                    <a href="#contact"
-                        class="mobile-nav-link stagger-item flex items-center px-4 py-3 text-lg font-medium text-white hover:text-[var(--primary-color)] hover:bg-white hover:bg-opacity-10 rounded-lg transition-all duration-300 group">
-                        <i
-                            class="fas fa-envelope mr-3 text-[var(--primary-color)] group-hover:scale-110 transition-transform duration-300"></i>
-                        Contact
-                    </a>
-                </div>
-            </nav>
-
-            <!-- Footer -->
-            <div class="mobile-menu-footer absolute bottom-0 left-0 right-0 p-6 border-t border-gray-700">
-                <div class="text-center text-sm text-gray-400">
-                    © 2024 Eranda Jayasinghe
-                </div>
+        <!-- Bio -->
+        <div class="w-full max-w-4xl" data-aos="fade-up">
+          <p class="text-2xl md:text-3xl mb-6 font-semibold" style="color:var(--primary-color)">
+            AI &amp; Machine Learning Engineer
+          </p>
+          <p class="text-gray-300 mb-8 leading-relaxed text-lg max-w-3xl mx-auto">
+            Final-year Computer Engineering undergraduate at University of Jaffna, specializing in AI, Machine Learning,
+            and Generative AI. Experienced in building real-world ML, NLP, and Flutter projects.
+            Skilled in Python, PyTorch, LangChain, OpenAI API, Flutter, Firebase, and cloud tools like AWS Bedrock and Azure AI.
+            Passionate about continuous learning with 20+ certifications.
+          </p>
+          <div class="flex justify-center flex-wrap gap-4" data-aos="fade-up" data-aos-delay="200">
+            <a href="#contact"  class="btn-primary  magnetic-btn glow-on-hover">Contact Me</a>
+            <a href="#projects" class="btn-outline   magnetic-btn">View Projects</a>
             </div>
         </div>
+      </div>
     </div>
+  </header>
 
-    <!-- Hero Section -->
-    <header class="hero-gradient pt-32 pb-24 parallax overflow-hidden parallax-element" data-speed="0.3">
-        <div class="parallax-bg" data-speed="0.5"></div>
+  <!-- ═══════════════════════════════════════════════════════
+       EXPERIENCE
+  ═══════════════════════════════════════════════════════ -->
+  <section id="experience" class="py-20 bg-black bg-opacity-60">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="section-title" data-aos="fade-up">Professional Experience</h2>
 
-        <!-- Background Scrolling Text -->
-        <div class="hero-bg-text-container" aria-hidden="true">
-            <div class="hero-bg-text">
-                AI SOFTWARE ENGINEER &nbsp; AI SOFTWARE ENGINEER &nbsp; AI SOFTWARE ENGINEER &nbsp; AI SOFTWARE ENGINEER
-                &nbsp;
+      <div class="card card-3d" data-aos="fade-up" data-aos-delay="200">
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-6">
+          <div>
+            <h3 class="text-2xl font-bold" style="color:var(--primary-color)">Software Engineer Intern</h3>
+            <div class="flex items-center mt-3 mb-1">
+              <img src="logo.png" alt="Simsyn Logo" class="h-8 w-auto object-contain mr-3 bg-white p-1 rounded">
+              <h4 class="text-xl text-white font-semibold">Simsyn (Pvt) Ltd — Sri Lanka</h4>
             </div>
-            <div class="hero-bg-text">
-                AI SOFTWARE ENGINEER &nbsp; AI SOFTWARE ENGINEER &nbsp; AI SOFTWARE ENGINEER &nbsp; AI SOFTWARE ENGINEER
-                &nbsp;
-            </div>
+            <p class="text-gray-400 text-sm mt-1">Enterprise AI-powered CRM &amp; multi-channel communication platform</p>
+          </div>
+          <span class="mt-4 md:mt-0 text-sm text-gray-400 bg-black bg-opacity-50 px-4 py-2 rounded-full whitespace-nowrap self-start">
+            Oct 2025 – May 2026
+          </span>
         </div>
 
-        <div class="max-w-6xl mx-auto px-6 relative z-10">
-            <div class="flex flex-col items-center text-center hero-flex pt-12">
-                <!-- Profile Image + Name Overlay at the Top -->
-                <div class="mb-16 relative" data-aos="fade-down">
-                    <div class="profile-image-container tilt-element mx-auto floating">
-                        <div class="profile-bg"></div>
-                        <img src="pic.png" alt="Eranda Jayasinghe" class="profile-image">
-                        <!-- Name Overlay 'on' it -->
-                        <div class="name-overlay">
-                            <h1 class="hero-title font-bold text-gradient mb-0">Eranda Jayasinghe</h1>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bio Text centered below -->
-                <div class="w-full hero-text-col" data-aos="fade-up">
-                    <p class="text-2xl md:text-3xl mb-6 text-[var(--primary-color)]" data-aos="fade-up"
-                        data-aos-delay="200">Looking for AI and Machine Learning Engineer Role</p>
-                    <p class="text-gray-300 mb-8 leading-relaxed text-lg max-w-3xl mx-auto" data-aos="fade-up"
-                        data-aos-delay="300">
-                        Final-year Computer Engineering undergraduate specializing in Computer Science Engineering,
-                        passionate and got hands on experience in AI, Machine Learning, and Generative AI.
-                        Experienced in building real-world ML, AI and NLP projects, including sentiment analysis,
-                        chatbots, and image classification.
-                        Skilled in Python, PyTorch, LangChain, OpenAI API, and cloud tools like AWS Bedrock and Azure
-                        AI.
-                        Passionate about continuous learning, with 20+ certifications and an active GitHub portfolio of
-                        AI-driven solutions.
-                    </p>
-                    <div class="flex justify-center space-x-4" data-aos="fade-up" data-aos-delay="400">
-                        <a href="#contact" class="btn-primary magnetic-btn glow-on-hover">
-                            Contact Me
-                        </a>
-                        <a href="#projects" class="btn-outline magnetic-btn">
-                            View Projects
-                        </a>
-                    </div>
-                </div>
-            </div>
+        <!-- Tech Stack -->
+        <div class="flex flex-wrap gap-2 mb-8">
+          <span class="tech-tag">React</span><span class="tech-tag">TypeScript</span>
+          <span class="tech-tag">Node.js</span><span class="tech-tag">PostgreSQL</span>
+          <span class="tech-tag">Redis</span><span class="tech-tag">Moleculer</span>
+          <span class="tech-tag">ElevenLabs</span><span class="tech-tag">Google STT</span>
+          <span class="tech-tag">3CX PBX</span><span class="tech-tag">MCP</span>
+          <span class="tech-tag">RAG</span><span class="tech-tag">Redux Toolkit</span>
+          <span class="tech-tag">Prisma</span><span class="tech-tag">Docker</span>
         </div>
-    </header>
 
-    <!-- Experience Section -->
-    <section id="experience" class="py-16 bg-black bg-opacity-60 section-transition">"
-        <div class="max-w-5xl mx-auto px-6">
-            <h2 class="section-title" data-aos="fade-up">
-                Professional <span class="text-[var(--primary-color)]">Experience</span>
-            </h2>
-            
-            <div class="bg-gray-900 rounded-lg p-8 shadow-lg card-3d" data-aos="fade-up" data-aos-delay="200">
-                <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-6">
-                    <div>
-                        <h3 class="text-2xl font-semibold text-[var(--primary-color)]">Software Engineer Intern</h3>
-                        <div class="flex items-center mt-2 mb-1">
-                            <img src="logo.png" alt="Simsyn Logo" class="h-8 w-auto object-contain mr-3 bg-white p-1 rounded">
-                            <h4 class="text-xl text-white">Simsyn (Pvt) Ltd - Sri Lanka</h4>
-                        </div>
-                        <p class="text-gray-400 text-sm mt-1">Enterprise AI-powered CRM & multi-channel communication platform</p>
-                    </div>
-                    <span class="text-gray-400 mt-4 md:mt-0 whitespace-nowrap bg-black bg-opacity-50 px-3 py-1 rounded-full text-sm">
-                        27 Oct 2025 – 15 May 2026
-                    </span>
-                </div>
+        <!-- Accordion Items -->
+        <div class="space-y-3">
 
-                <!-- Tech Stack -->
-                <div class="flex flex-wrap gap-2 mb-8">
-                    <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">React</span>
-                    <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">TypeScript</span>
-                    <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Node.js</span>
-                    <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">PostgreSQL</span>
-                    <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Redis</span>
-                    <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Moleculer</span>
-                    <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">ElevenLabs</span>
-                    <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Google STT</span>
-                    <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">3CX PBX</span>
-                    <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">MCP</span>
-                    <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">RAG</span>
-                    <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Redux Toolkit</span>
-                    <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Prisma</span>
-                    <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Docker</span>
-                </div>
-
-                <div class="space-y-4 text-gray-300">
-                    <!-- 1. AI Voice Agent -->
-                    <div class="bg-black bg-opacity-40 rounded-lg border border-gray-700 overflow-hidden transition-all duration-300 hover:border-gray-500">
-                        <button class="w-full px-6 py-4 flex justify-between items-center focus:outline-none" onclick="toggleAccordion(this)">
-                            <h4 class="text-lg font-medium text-white m-0 flex items-center">
-                                <i class="fas fa-robot text-[var(--primary-color)] mr-3"></i>
-                                1. AI Voice Agent & Real-Time Telephony
-                            </h4>
-                            <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-6 pb-6 pt-2 border-t border-gray-800 mt-2">
-                                <ul class="list-none pl-6 space-y-2">
-                                    <li class="relative before:content-['•'] before:absolute before:-left-4 before:text-[var(--primary-color)]">Built a real-time AI voice agent platform integrated with 3CX PBX using Node.js Moleculer microservices and multi-provider STT/TTS pipelines.</li>
-                                    <li class="relative before:content-['•'] before:absolute before:-left-4 before:text-[var(--primary-color)]">Engineered live interrupt handling, automatic STT recovery, and cancellable TTS for stable real-time conversations.</li>
-                                    <li class="relative before:content-['•'] before:absolute before:-left-4 before:text-[var(--primary-color)]">Implemented ElevenLabs WebSocket STT with FFmpeg audio resampling and Google gRPC-compatible streaming.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 2. WhatsApp Integration -->
-                    <div class="bg-black bg-opacity-40 rounded-lg border border-gray-700 overflow-hidden transition-all duration-300 hover:border-gray-500">
-                        <button class="w-full px-6 py-4 flex justify-between items-center focus:outline-none" onclick="toggleAccordion(this)">
-                            <h4 class="text-lg font-medium text-white m-0 flex items-center">
-                                <i class="fab fa-whatsapp text-[var(--primary-color)] mr-3"></i>
-                                2. WhatsApp Integration to the System
-                            </h4>
-                            <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-6 pb-6 pt-2 border-t border-gray-800 mt-2">
-                                <ul class="list-none pl-6 space-y-2">
-                                    <li class="relative before:content-['•'] before:absolute before:-left-4 before:text-[var(--primary-color)]">Built a full-stack WhatsApp Business API integration with template management, media uploads, Redis caching, and CRM variable resolution.</li>
-                                    <li class="relative before:content-['•'] before:absolute before:-left-4 before:text-[var(--primary-color)]">Developed a React/TypeScript frontend with live previews, placeholder injection, and Redux Saga state management.</li>
-                                    <li class="relative before:content-['•'] before:absolute before:-left-4 before:text-[var(--primary-color)]">Implemented inbound/outbound messaging pipelines with webhook verification, session tracking, retries, and delivery status updates.</li>
-                                    <li class="relative before:content-['•'] before:absolute before:-left-4 before:text-[var(--primary-color)]">Built a WhatsApp-to-AI-Agent bridge supporting threaded replies and workflow-driven AI execution.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 3. Multi-Channel Conversations -->
-                    <div class="bg-black bg-opacity-40 rounded-lg border border-gray-700 overflow-hidden transition-all duration-300 hover:border-gray-500">
-                        <button class="w-full px-6 py-4 flex justify-between items-center focus:outline-none" onclick="toggleAccordion(this)">
-                            <h4 class="text-lg font-medium text-white m-0 flex items-center">
-                                <i class="fas fa-comments text-[var(--primary-color)] mr-3"></i>
-                                3. Multi-Channel Conversations & Dashboard
-                            </h4>
-                            <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-6 pb-6 pt-2 border-t border-gray-800 mt-2">
-                                <ul class="list-none pl-6 space-y-2">
-                                    <li class="relative before:content-['•'] before:absolute before:-left-4 before:text-[var(--primary-color)]">Built a reusable Conversations Dashboard supporting WhatsApp, SMS, Email, Agent, and CRM inboxes with real-time polling and infinite scrolling.</li>
-                                    <li class="relative before:content-['•'] before:absolute before:-left-4 before:text-[var(--primary-color)]">Implemented dynamic rendering for channel-specific message layouts and CRM context injection.</li>
-                                    <li class="relative before:content-['•'] before:absolute before:-left-4 before:text-[var(--primary-color)]">Developed a tri-channel template sending system with placeholder mapping and session-aware error handling.</li>
-                                    <li class="relative before:content-['•'] before:absolute before:-left-4 before:text-[var(--primary-color)]">Built a unified CRM conversation interface with reusable dashboards and split-panel thread views.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 4. Bug Fixes -->
-                    <div class="bg-black bg-opacity-40 rounded-lg border border-gray-700 overflow-hidden transition-all duration-300 hover:border-gray-500">
-                        <button class="w-full px-6 py-4 flex justify-between items-center focus:outline-none" onclick="toggleAccordion(this)">
-                            <h4 class="text-lg font-medium text-white m-0 flex items-center">
-                                <i class="fas fa-bug text-[var(--primary-color)] mr-3"></i>
-                                4. Bug Fixes & Cross-Codebase Stabilization
-                            </h4>
-                            <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="px-6 pb-6 pt-2 border-t border-gray-800 mt-2">
-                                <ul class="list-none pl-6 space-y-2">
-                                    <li class="relative before:content-['•'] before:absolute before:-left-4 before:text-[var(--primary-color)]">Resolved critical messaging, workflow, and conversation routing bugs across multiple modules.</li>
-                                    <li class="relative before:content-['•'] before:absolute before:-left-4 before:text-[var(--primary-color)]">Stabilized AI agent services by resolving Prisma client exhaustion, workflow refresh failures, and provider state issues.</li>
-                                    <li class="relative before:content-['•'] before:absolute before:-left-4 before:text-[var(--primary-color)]">Fixed release focus on frontend and backend defects involving Redux initialization, migrations, API failures, and permission logic.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          <div class="accordion-item">
+            <button class="accordion-btn" onclick="toggleAccordion(this)">
+              <h4 class="flex items-center text-base font-semibold text-white m-0">
+                <i class="fas fa-robot mr-3" style="color:var(--primary-color)"></i>
+                1. AI Voice Agent &amp; Real-Time Telephony
+              </h4>
+              <i class="fas fa-chevron-down accordion-chevron"></i>
+            </button>
+            <div class="accordion-content">
+              <ul class="exp-list">
+                <li>Built a real-time AI voice agent platform integrated with 3CX PBX using Node.js Moleculer microservices and multi-provider STT/TTS pipelines.</li>
+                <li>Engineered live interrupt handling, automatic STT recovery, and cancellable TTS for stable real-time conversations.</li>
+                <li>Implemented ElevenLabs WebSocket STT with FFmpeg audio resampling and Google gRPC-compatible streaming.</li>
+              </ul>
             </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-btn" onclick="toggleAccordion(this)">
+              <h4 class="flex items-center text-base font-semibold text-white m-0">
+                <i class="fab fa-whatsapp mr-3" style="color:var(--primary-color)"></i>
+                2. WhatsApp Integration to the System
+              </h4>
+              <i class="fas fa-chevron-down accordion-chevron"></i>
+            </button>
+            <div class="accordion-content">
+              <ul class="exp-list">
+                <li>Built a full-stack WhatsApp Business API integration with template management, media uploads, Redis caching, and CRM variable resolution.</li>
+                <li>Developed a React/TypeScript frontend with live previews, placeholder injection, and Redux Saga state management.</li>
+                <li>Implemented inbound/outbound messaging pipelines with webhook verification, session tracking, retries, and delivery status updates.</li>
+                <li>Built a WhatsApp-to-AI-Agent bridge supporting threaded replies and workflow-driven AI execution.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-btn" onclick="toggleAccordion(this)">
+              <h4 class="flex items-center text-base font-semibold text-white m-0">
+                <i class="fas fa-comments mr-3" style="color:var(--primary-color)"></i>
+                3. Multi-Channel Conversations &amp; Dashboard
+              </h4>
+              <i class="fas fa-chevron-down accordion-chevron"></i>
+            </button>
+            <div class="accordion-content">
+              <ul class="exp-list">
+                <li>Built a reusable Conversations Dashboard supporting WhatsApp, SMS, Email, Agent, and CRM inboxes with real-time polling and infinite scrolling.</li>
+                <li>Implemented dynamic rendering for channel-specific message layouts and CRM context injection.</li>
+                <li>Developed a tri-channel template sending system with placeholder mapping and session-aware error handling.</li>
+                <li>Built a unified CRM conversation interface with reusable dashboards and split-panel thread views.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-btn" onclick="toggleAccordion(this)">
+              <h4 class="flex items-center text-base font-semibold text-white m-0">
+                <i class="fas fa-bug mr-3" style="color:var(--primary-color)"></i>
+                4. Bug Fixes &amp; Cross-Codebase Stabilization
+              </h4>
+              <i class="fas fa-chevron-down accordion-chevron"></i>
+            </button>
+            <div class="accordion-content">
+              <ul class="exp-list">
+                <li>Resolved critical messaging, workflow, and conversation routing bugs across multiple modules.</li>
+                <li>Stabilized AI agent services by resolving Prisma client exhaustion, workflow refresh failures, and provider state issues.</li>
+                <li>Fixed release focus on frontend and backend defects involving Redux initialization, migrations, API failures, and permission logic.</li>
+              </ul>
+            </div>
+          </div>
+
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <div class="section-divider"></div>
+  <div class="section-divider"></div>
 
-    <!-- Education Section -->
-    <section id="education" class="py-20 bg-[var(--background-dark)]">
-        <div class="max-w-5xl mx-auto px-6">
-            <h2 class="section-title" data-aos="fade-up">Education</h2>
-            <div class="card card-3d" data-aos="fade-up" data-aos-delay="200">
-                <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
-                    <h3 class="text-2xl font-semibold text-[var(--primary-color)]">BSc. Engineering (Hons.) in Computer
-                        Engineering</h3>
-                    <span class="text-gray-400 mt-2 md:mt-0">April 2022 - Present</span>
-                </div>
-                <h4 class="text-xl text-white">University of Jaffna</h4>
-            </div>
+  <!-- ═══════════════════════════════════════════════════════
+       EDUCATION
+  ═══════════════════════════════════════════════════════ -->
+  <section id="education" class="py-20 bg-[var(--background-dark)]">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="section-title" data-aos="fade-up">Education</h2>
+      <div class="card card-3d" data-aos="fade-up" data-aos-delay="200">
+        <div class="flex flex-col md:flex-row md:justify-between md:items-center">
+          <div>
+            <h3 class="text-2xl font-bold" style="color:var(--primary-color)">BSc. Engineering (Hons.) in Computer Engineering</h3>
+            <h4 class="text-xl text-white mt-2">University of Jaffna</h4>
+          </div>
+          <span class="text-gray-400 mt-3 md:mt-0 bg-black bg-opacity-50 px-4 py-2 rounded-full text-sm whitespace-nowrap">
+            April 2022 – Present
+          </span>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <div class="section-divider"></div>
+  <div class="section-divider"></div>
 
-    <!-- About Section -->
-    <section id="about" class="py-16 bg-black bg-opacity-60 section-transition">
-        <div class="max-w-5xl mx-auto px-4">
-            <h2 class="section-title" data-aos="fade-up">
-                About <span class="text-green-300">Me</span>
-            </h2>
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-8 md:mb-0" data-aos="fade-right">
-                    <div class="bg-gray-900 p-6 rounded-lg shadow-lg card-3d">
-                        <h3 class="text-xl font-semibold mb-4 text-green-300">Who I Am</h3>
-                        <p class="text-gray-300 mb-4 leading-relaxed">
-                            I'm an AI & Machine Learning Engineer with a strong background in computer science,
-                            specializing in Generative AI,
-                            ML automation, and deep learning. I enjoy building intelligent, adaptive systems using
-                            Python, TensorFlow, PyTorch, and LLMs.
-                            I also work on full-stack web development with React, Spring Boot, and MySQL—delivering
-                            scalable, end-to-end solutions.
-                            My focus is on creating ethical, efficient, and impactful AI products powered by real-world
-                            data and robust backend systems.
-                        </p>
-                    </div>
-                </div>
-                <div class="md:w-1/2 md:pl-8" data-aos="fade-left" data-aos-delay="200">
-                    <div class="grid grid-cols-2 gap-4 stagger-container">
-                        <div class="bg-gray-900 p-4 rounded-lg stagger-item card-3d">
-                            <div class="text-green-300 text-3xl mb-2">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <h4 class="text-lg font-semibold mb-2">AI Development</h4>
-                            <p class="text-gray-400">
-                                Designing and deploying generative AI models. Experience in NLP, computer vision (CNNs),
-                                LLM and RAG
-                            </p>
-                        </div>
-                        <div class="bg-gray-900 p-4 rounded-lg stagger-item card-3d">
-                            <div class="text-green-300 text-3xl mb-2">
-                                <i class="fas fa-brain"></i>
-                            </div>
-                            <h4 class="text-lg font-semibold mb-2">ML Development</h4>
-                            <p class="text-gray-400">
-                                Sentiment analysis, image classification, and predictions. Proficient in scikit-learn,
-                                Keras, and MLOps practices.
-                            </p>
-                        </div>
-                        <div class="bg-gray-900 p-4 rounded-lg stagger-item card-3d">
-                            <div class="text-green-300 text-3xl mb-2">
-                                <i class="fas fa-database"></i>
-                            </div>
-                            <h4 class="text-lg font-semibold mb-2">Backend Development</h4>
-                            <p class="text-gray-400">
-                                Deploying AI/ML models as flask and streamlit. Got experience with AWS (Bedrock,
-                                SageMaker) and Azure.
-                            </p>
-                        </div>
-                        <div class="bg-gray-900 p-4 rounded-lg stagger-item card-3d">
-                            <div class="text-green-300 text-3xl mb-2">
-                                <i class="fas fa-laptop-code"></i>
-                            </div>
-                            <h4 class="text-lg font-semibold mb-2">Cloud Practitioner</h4>
-                            <p class="text-gray-400">
-                                Backend developing with SpringBoot and PHP using MySQL. Integrating frontend with HTML,
-                                CSS, and React.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <!-- ═══════════════════════════════════════════════════════
+       ABOUT
+  ═══════════════════════════════════════════════════════ -->
+  <section id="about" class="py-20 bg-black bg-opacity-60">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="section-title" data-aos="fade-up">About Me</h2>
+      <div class="flex flex-col md:flex-row items-start gap-8">
+
+        <div class="md:w-1/2" data-aos="fade-right">
+          <div class="card card-3d h-full">
+            <h3 class="text-xl font-bold mb-4" style="color:var(--primary-color)">Who I Am</h3>
+            <p class="text-gray-300 leading-relaxed">
+              I'm an AI &amp; Machine Learning Engineer with a strong background in computer science,
+              specializing in Generative AI, ML automation, and deep learning. I enjoy building
+              intelligent, adaptive systems using Python, TensorFlow, PyTorch, and LLMs.
+              I also work on full-stack web development with React, Spring Boot, and MySQL —
+              delivering scalable, end-to-end solutions. My focus is on creating ethical,
+              efficient, and impactful AI products powered by real-world data.
+            </p>
+          </div>
         </div>
-    </section>
 
-    <div class="section-divider"></div>
-
-    <!-- Skills Section -->
-    <section id="skills" class="py-16 bg-gray-900 bg-opacity-60">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="section-title" data-aos="fade-up">
-                Skills & <span class="text-green-300">Tools</span>
-            </h2>
-
-            <div class="mb-12" data-aos="fade-up">
-                <h3 class="text-xl font-semibold mb-6 text-green-300">Core Technologies</h3>
-
-                <!-- AI/ML Technologies -->
-                <h4 class="text-xl font-semibold mb-6 text-green-300">AI/ML Technologies</h4>
-                <div
-                    class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-4 mb-8 stagger-container">
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
-                        data-aos="fade-up" data-aos-delay="100">
-                        <i class="fab fa-python text-4xl mb-2 text-blue-400"></i>
-                        <p>Python</p>
-                        <div class="skill-circle mt-2" data-value="0.95"></div>
-                    </div>
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
-                        data-aos="fade-up" data-aos-delay="150">
-                        <i class="fas fa-fire text-4xl mb-2 text-orange-500"></i>
-                        <p>PyTorch</p>
-                        <div class="skill-circle mt-2" data-value="0.85"></div>
-                    </div>
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
-                        data-aos="fade-up" data-aos-delay="200">
-                        <i class="fas fa-link text-4xl mb-2 text-purple-400"></i>
-                        <p>LangChain</p>
-                        <div class="skill-circle mt-2" data-value="0.8"></div>
-                    </div>
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
-                        data-aos="fade-up" data-aos-delay="250">
-                        <i class="fas fa-robot text-4xl mb-2 text-blue-500"></i>
-                        <p>OpenAI API</p>
-                        <div class="skill-circle mt-2" data-value="0.9"></div>
-                    </div>
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
-                        data-aos="fade-up" data-aos-delay="300">
-                        <i class="fas fa-brain text-4xl mb-2 text-yellow-500"></i>
-                        <p>LLaMA</p>
-                        <div class="skill-circle mt-2" data-value="0.75"></div>
-                    </div>
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
-                        data-aos="fade-up" data-aos-delay="350">
-                        <i class="fas fa-database text-4xl mb-2 text-green-400"></i>
-                        <p>RAG</p>
-                        <div class="skill-circle mt-2" data-value="0.85"></div>
-                    </div>
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
-                        data-aos="fade-up" data-aos-delay="400">
-                        <i class="fas fa-layer-group text-4xl mb-2 text-red-400"></i>
-                        <p>Keras</p>
-                        <div class="skill-circle mt-2" data-value="0.8"></div>
-                    </div>
-                </div>
-
-                <!-- Web Development -->
-                <h4 class="text-xl font-semibold mb-6 text-green-300">Web Development</h4>
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-8 stagger-container">
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
-                        data-aos="fade-up" data-aos-delay="100">
-                        <i class="fab fa-react text-4xl mb-2 text-blue-400"></i>
-                        <p>React</p>
-                        <div class="skill-circle mt-2" data-value="0.8"></div>
-                    </div>
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
-                        data-aos="fade-up" data-aos-delay="150">
-                        <i class="fab fa-html5 text-4xl mb-2 text-orange-500"></i>
-                        <p>HTML</p>
-                        <div class="skill-circle mt-2" data-value="0.9"></div>
-                    </div>
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
-                        data-aos="fade-up" data-aos-delay="200">
-                        <i class="fab fa-css3-alt text-4xl mb-2 text-blue-500"></i>
-                        <p>CSS</p>
-                        <div class="skill-circle mt-2" data-value="0.85"></div>
-                    </div>
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
-                        data-aos="fade-up" data-aos-delay="250">
-                        <i class="fas fa-leaf text-4xl mb-2 text-green-500"></i>
-                        <p>Spring Boot</p>
-                        <div class="skill-circle mt-2" data-value="0.75"></div>
-                    </div>
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
-                        data-aos="fade-up" data-aos-delay="300">
-                        <i class="fab fa-php text-4xl mb-2 text-purple-400"></i>
-                        <p>PHP</p>
-                        <div class="skill-circle mt-2" data-value="0.7"></div>
-                    </div>
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
-                        data-aos="fade-up" data-aos-delay="350">
-                        <i class="fas fa-database text-4xl mb-2 text-blue-400"></i>
-                        <p>MySQL</p>
-                        <div class="skill-circle mt-2" data-value="0.8"></div>
-                    </div>
-                </div>
-
-                <!-- Cloud & Backend -->
-                <h4 class="text-xl font-semibold mb-6 text-green-300">Cloud & Backend</h4>
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 stagger-container">
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
-                        data-aos="fade-up" data-aos-delay="100">
-                        <i class="fas fa-flask text-4xl mb-2 text-green-400"></i>
-                        <p>Flask</p>
-                        <div class="skill-circle mt-2" data-value="0.85"></div>
-                    </div>
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
-                        data-aos="fade-up" data-aos-delay="150">
-                        <i class="fab fa-aws text-4xl mb-2 text-yellow-400"></i>
-                        <p>AWS</p>
-                        <div class="skill-circle mt-2" data-value="0.8"></div>
-                    </div>
-                    <div class="bg-black bg-opacity-60 p-4 rounded-lg text-center skill-icon stagger-item"
-                        data-aos="fade-up" data-aos-delay="200">
-                        <i class="fab fa-microsoft text-4xl mb-2 text-blue-500"></i>
-                        <p>Azure</p>
-                        <div class="skill-circle mt-2" data-value="0.75"></div>
-                    </div>
-                </div>
+        <div class="md:w-1/2" data-aos="fade-left" data-aos-delay="200">
+          <div class="grid grid-cols-2 gap-4 stagger-container">
+            <div class="card card-3d stagger-item">
+              <div class="text-3xl mb-3" style="color:var(--primary-color)"><i class="fas fa-robot"></i></div>
+              <h4 class="text-base font-bold mb-2 text-white">AI Development</h4>
+              <p class="text-gray-400 text-sm leading-relaxed">Generative AI, NLP, computer vision (CNNs), LLM and RAG pipelines.</p>
             </div>
-
-            <!-- Development Tools -->
-            <div class="mb-12" data-aos="fade-up" data-aos-delay="300">
-                <h3 class="text-xl font-semibold mb-6 text-green-300">Development Tools</h3>
-                <div class="flex flex-wrap gap-2">
-                    <span class="px-3 py-1 bg-black bg-opacity-60 rounded-full text-sm">Git</span>
-                    <span class="px-3 py-1 bg-black bg-opacity-60 rounded-full text-sm">Docker</span>
-                    <span class="px-3 py-1 bg-black bg-opacity-60 rounded-full text-sm">VS Code</span>
-                    <span class="px-3 py-1 bg-black bg-opacity-60 rounded-full text-sm">Jupyter</span>
-                    <span class="px-3 py-1 bg-black bg-opacity-60 rounded-full text-sm">Postman</span>
-                    <span class="px-3 py-1 bg-black bg-opacity-60 rounded-full text-sm">Maven</span>
-                    <span class="px-3 py-1 bg-black bg-opacity-60 rounded-full text-sm">npm</span>
-                </div>
+            <div class="card card-3d stagger-item">
+              <div class="text-3xl mb-3" style="color:var(--primary-color)"><i class="fas fa-brain"></i></div>
+              <h4 class="text-base font-bold mb-2 text-white">ML Development</h4>
+              <p class="text-gray-400 text-sm leading-relaxed">Sentiment analysis, image classification. Scikit-learn, Keras, MLOps.</p>
             </div>
+            <div class="card card-3d stagger-item">
+              <div class="text-3xl mb-3" style="color:var(--primary-color)"><i class="fas fa-mobile-alt"></i></div>
+              <h4 class="text-base font-bold mb-2 text-white">Flutter Apps</h4>
+              <p class="text-gray-400 text-sm leading-relaxed">Cross-platform mobile apps with Firebase, custom UI, and animations.</p>
+            </div>
+            <div class="card card-3d stagger-item">
+              <div class="text-3xl mb-3" style="color:var(--primary-color)"><i class="fas fa-cloud"></i></div>
+              <h4 class="text-base font-bold mb-2 text-white">Cloud & Backend</h4>
+              <p class="text-gray-400 text-sm leading-relaxed">AWS Bedrock, Azure AI, Flask, Spring Boot, MySQL deployment.</p>
+            </div>
+          </div>
         </div>
-    </section>
 
-    <div class="section-divider"></div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-16 bg-black bg-opacity-60">
-        <div class="max-w-5xl mx-auto px-4">
-            <h2 class="section-title" data-aos="fade-up">
-                Featured <span class="text-green-300">Projects</span>
-            </h2>
+  <div class="section-divider"></div>
 
-            <!-- AI and ML Projects -->
-            <h4 class="text-xl font-semibold mb-6 text-green-300" data-aos="fade-up">AI and ML</h4>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Project 1 -->
-                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d project-item" data-category="flutter" data-aos="fade-up"
-                    data-aos-delay="100">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-green-300">Plant Leaf Detection and Disease
-                            Recognition System</h3>
-                        <p class="text-gray-300 mb-4">
-                            Real-time detection system using YOLOv5 for plant leaf detection and TensorFlow for disease
-                            classification.
-                            Features a multi-page Streamlit interface with dataset overview, manual prediction, and live
-                            camera-based recognition.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Python</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">YOLOv5</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">TensorFlow</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Streamlit</span>
-                        </div>
-                        <div class="flex space-x-4">
-                            <a href="https://github.com/Eranda724/Plant-Disease-Detection-System"
-                                class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
-                                <i class="fab fa-github text-xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+  <!-- ═══════════════════════════════════════════════════════
+       SKILLS
+  ═══════════════════════════════════════════════════════ -->
+  <section id="skills" class="py-20 bg-gray-900 bg-opacity-60">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="section-title" data-aos="fade-up">Skills &amp; Tools</h2>
 
-                <!-- Project 2 -->
-                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d project-item" data-category="flutter" data-aos="fade-up"
-                    data-aos-delay="200">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-green-300">English SpellChecker FlaskApp</h3>
-                        <p class="text-gray-300 mb-4">
-                            Corpus-based auto-correction tool using the Leipzig English dataset. Implements edit
-                            distance algorithm
-                            for word suggestions and features a lightweight Flask web interface for real-time
-                            corrections.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Python</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Flask</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">NLP</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">PyTorch</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Transformers</span>
-                        </div>
-                        <div class="flex space-x-4">
-                            <a href="https://github.com/Eranda724/Developing-Auto-Correct-Sinhala"
-                                class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
-                                <i class="fab fa-github text-xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d project-item" data-category="flutter" data-aos="fade-up"
-                    data-aos-delay="300">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-green-300">Local RAG PDF Chatbot</h3>
-                        <p class="text-gray-300 mb-4">
-                            Built a local RAG pipeline using LangChain and Ollama for PDF document interaction.
-                            Features context-aware summaries and secure local document handling without internet
-                            dependency.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Python</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">LangChain</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Ollama</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Chroma</span>
-                        </div>
-                        <div class="flex space-x-4">
-                            <a href="https://github.com/Eranda724/LLM-RAG-model-Pdf-ChatBot"
-                                class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
-                                <i class="fab fa-github text-xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d project-item" data-category="flutter" data-aos="fade-up"
-                    data-aos-delay="400">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-green-300">AI Chatbot for Attendance Management</h3>
-                        <p class="text-gray-300 mb-4">
-                            AI-powered chatbot using Flask and PyTorch with custom intent training. Implements NLP
-                            features
-                            including tokenization and stemming, with a RESTful API and clean frontend integration.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Python</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Flask</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">PyTorch</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">NLP</span>
-                        </div>
-                        <div class="flex space-x-4">
-                            <a href="https://github.com/Eranda724/Ai-ChatBot-for-Attendance-Management-System-website"
-                                class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
-
-                                <i class="fab fa-github text-xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 5 -->
-                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d project-item" data-category="flutter" data-aos="fade-up"
-                    data-aos-delay="500">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-green-300">CNN-LSTM Image Caption Generator</h3>
-                        <p class="text-gray-300 mb-4">
-                            Image captioning model using ResNet101 and LSTM on the Flickr8k dataset. Features teacher
-                            forcing,
-                            greedy decoding, and comprehensive Jupyter workflow with loss tracking and model
-                            checkpointing.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Python</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">PyTorch</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">ResNet101</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">LSTM</span>
-                        </div>
-                        <div class="flex space-x-4">
-                            <a href="https://github.com/Eranda724/CNN-LSTM-Image-Caption-Generator"
-                                class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
-                                <i class="fab fa-github text-xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 6 -->
-                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d project-item" data-category="flutter" data-aos="fade-up"
-                    data-aos-delay="600">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-green-300">Seamless AI Platform for Multi-Modal
-                            Interaction</h3>
-                        <p class="text-gray-300 mb-4">
-                            Custom GPT-powered AI platform supporting document Q&A, summarization, semantic search, and
-                            real-time voice translation (English → Sinhala) across 50+ PDFs, CSVs, and text files using
-                            local LLMs and ChromaDB for efficient vector storage and retrieval.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Python</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">LangChain</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Ollama</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Whisper</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">ChromaDB</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Streamlit</span>
-                        </div>
-                        <div class="flex space-x-4">
-                            <a href="https://github.com/Eranda724"
-                                class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
-                                <i class="fab fa-github text-xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 7 -->
-                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d project-item" data-category="flutter" data-aos="fade-up"
-                    data-aos-delay="700">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-green-300">Skin Cancer Detection with Deep Learning
-                        </h3>
-                        <p class="text-gray-300 mb-4">
-                            <span class="text-yellow-300 font-semibold">[Ongoing Research]</span> Training CNN models
-                            (EfficientNet-B0, ResNet-50, InceptionV3, AlexNet) on the ISIC 2024 3D Total Body
-                            Photography dataset using CLAHE preprocessing and Deep-SMOTE class balancing to improve
-                            diagnostic accuracy and reduce false positives.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Python</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">TensorFlow</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Keras</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">OpenCV</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">CLAHE</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Deep-SMOTE</span>
-                        </div>
-                        <div class="flex space-x-4">
-                            <a href="https://github.com/Eranda724"
-                                class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
-                                <i class="fab fa-github text-xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Web Development Projects -->
-            <h4 class="text-xl font-semibold mb-6 mt-12 text-green-300" data-aos="fade-up">Web Development</h4>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Project 1 -->
-                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d project-item" data-category="flutter" data-aos="fade-up"
-                    data-aos-delay="100">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-green-300">Student Attendance Management System</h3>
-                        <p class="text-gray-300 mb-4">
-                            A comprehensive web-based system for managing student attendance, courses, and lectures.
-                            Features include
-                            course management, attendance tracking, report generation, and secure authentication.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">HTML</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">CSS</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">PHP</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">MySQL</span>
-                        </div>
-                        <div class="flex space-x-4">
-                            <a href="https://github.com/Eranda724/Student-Attendence-Management-System"
-                                class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
-                                <i class="fab fa-github text-xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d project-item" data-category="flutter" data-aos="fade-up"
-                    data-aos-delay="200">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-green-300">Real-Time Video Conferencing App</h3>
-                        <p class="text-gray-300 mb-4">
-                            A feature-rich video conferencing application built with WebRTC and Socket.IO. Includes
-                            multi-user video chat,
-                            screen sharing, text chat, and responsive design for seamless cross-device experience.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">JavaScript</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">WebRTC</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Socket.IO</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Express.js</span>
-                        </div>
-                        <div class="flex space-x-4">
-                            <a href="https://github.com/Eranda724/Real-Time-Video-Conferencing-Application-using-WebRTC"
-                                class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
-                                <i class="fab fa-github text-xl"></i>
-                            </a>
-                            <a href="https://lnkd.in/gPZV9KmN"
-                                class="text-green-300 hover:text-green-500 transition duration-300">
-                                <i class="fas fa-external-link-alt text-xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d project-item" data-category="flutter" data-aos="fade-up"
-                    data-aos-delay="300">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-green-300">Bookify Universal Booking System</h3>
-                        <p class="text-gray-300 mb-4">
-                            Developed a robust backend booking system using Spring Boot, enabling efficient reservation
-                            and management workflows.
-                            Integrated MySQL for structured data storage and designed RESTful APIs for modular booking
-                            operations.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Spring Boot</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Java</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">MySQL</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">REST API</span>
-                        </div>
-                        <div class="flex space-x-4">
-                            <a href="https://github.com/Eranda724/Bookify-Staging-FullStack"
-                                class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
-                                <i class="fab fa-github text-xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d project-item" data-category="flutter" data-aos="fade-up"
-                    data-aos-delay="400">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-green-300">Bag Store - React E-Commerce Platform</h3>
-                        <p class="text-gray-300 mb-4">
-                            Full-stack e-commerce web app for online bag shopping with product browsing, cart
-                            management, secure checkout, order tracking, user profiles, and an admin dashboard for
-                            product and order management. Built with React and Firebase backend.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">React</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Firebase</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Context API</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">JavaScript</span>
-                        </div>
-                        <div class="flex space-x-4">
-                            <a href="https://github.com/Eranda724"
-                                class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
-                                <i class="fab fa-github text-xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 5 -->
-                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d project-item" data-category="flutter" data-aos="fade-up"
-                    data-aos-delay="500">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-green-300">Uni Kade - University Food Ordering &
-                            Marketplace</h3>
-                        <p class="text-gray-300 mb-4">
-                            Full-stack campus marketplace connecting students with campus sellers, featuring role-based
-                            access (Student/Seller/Admin), real-time order notifications, product and inventory
-                            management, and live order status tracking. Built with Node.js, Express, React, and
-                            Socket.io for real-time updates.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Node.js</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Express.js</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">MongoDB</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">React</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Socket.io</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Tailwind CSS</span>
-                        </div>
-                        <div class="flex space-x-4">
-                            <a href="https://github.com/Eranda724"
-                                class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
-                                <i class="fab fa-github text-xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <!-- AI/ML -->
+      <div class="mb-10" data-aos="fade-up">
+        <h3 class="skills-category-title">AI / ML Technologies</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4 stagger-container">
+          <div class="skill-icon p-4 rounded-lg text-center stagger-item"><i class="fab fa-python text-4xl mb-2 text-blue-400"></i><p class="text-sm">Python</p><div class="skill-circle mt-2" data-value="0.95"></div></div>
+          <div class="skill-icon p-4 rounded-lg text-center stagger-item"><i class="fas fa-fire text-4xl mb-2 text-orange-500"></i><p class="text-sm">PyTorch</p><div class="skill-circle mt-2" data-value="0.85"></div></div>
+          <div class="skill-icon p-4 rounded-lg text-center stagger-item"><i class="fas fa-link text-4xl mb-2 text-purple-400"></i><p class="text-sm">LangChain</p><div class="skill-circle mt-2" data-value="0.80"></div></div>
+          <div class="skill-icon p-4 rounded-lg text-center stagger-item"><i class="fas fa-robot text-4xl mb-2 text-blue-500"></i><p class="text-sm">OpenAI API</p><div class="skill-circle mt-2" data-value="0.90"></div></div>
+          <div class="skill-icon p-4 rounded-lg text-center stagger-item"><i class="fas fa-brain text-4xl mb-2 text-yellow-500"></i><p class="text-sm">LLaMA</p><div class="skill-circle mt-2" data-value="0.75"></div></div>
+          <div class="skill-icon p-4 rounded-lg text-center stagger-item"><i class="fas fa-database text-4xl mb-2 text-green-400"></i><p class="text-sm">RAG</p><div class="skill-circle mt-2" data-value="0.85"></div></div>
+          <div class="skill-icon p-4 rounded-lg text-center stagger-item"><i class="fas fa-layer-group text-4xl mb-2 text-red-400"></i><p class="text-sm">Keras</p><div class="skill-circle mt-2" data-value="0.80"></div></div>
         </div>
-    </section>
+      </div>
 
-    <div class="section-divider"></div>
-
-    <!-- Flutter Projects Section -->
-    <section id="flutter" class="py-16 bg-black bg-opacity-60">
-        <div class="max-w-5xl mx-auto px-4">
-            <h2 class="section-title" data-aos="fade-up">
-                Flutter <span class="text-green-300">Mobile Apps</span>
-            </h2>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Project 1 -->
-                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d project-item" data-category="flutter" data-aos="fade-up"
-                    data-aos-delay="100">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-green-300">Ariviyal Nagar Food Ordering App</h3>
-                        <p class="text-gray-300 mb-4">
-                            Mobile food ordering app with secure user authentication, real-time cart management, and
-                            Google Maps location integration. Features real-time order tracking, payment processing, and
-                            user-friendly UI backed by Firebase for authentication and cloud storage.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Flutter</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Firebase</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Google Maps</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Provider</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Dart</span>
-                        </div>
-                        <div class="flex space-x-4">
-                            <a href="https://github.com/Eranda724"
-                                class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
-                                <i class="fab fa-github text-xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d project-item" data-category="flutter" data-aos="fade-up"
-                    data-aos-delay="200">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-green-300">AquaFocus - Digital Wellness & Phone
-                            Addiction Tracker</h3>
-                        <p class="text-gray-300 mb-4">
-                            Gamified mobile app that helps users reduce phone addiction by unlocking virtual fish tank
-                            rewards for meeting screen-time goals. Features real-time device usage monitoring, visual
-                            analytics with charts, daily challenges, and streak tracking.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Flutter</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Firebase</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Riverpod</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">FlChart</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Local
-                                Notifications</span>
-                        </div>
-                        <div class="flex space-x-4">
-                            <a href="https://github.com/Eranda724"
-                                class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
-                                <i class="fab fa-github text-xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="bg-gray-900 rounded-lg overflow-hidden project-card card-3d project-item" data-category="flutter" data-aos="fade-up"
-                    data-aos-delay="300">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-green-300">Machinement - Smart Task & Order
-                            Management</h3>
-                        <p class="text-gray-300 mb-4">
-                            Task and order management app built for tailoring and production workflows. Features
-                            real-time order tracking, customer measurement templates, payment management, multilingual
-                            support, and dark/light themes. Built with Firebase Firestore for real-time data sync.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Flutter</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Firebase
-                                Firestore</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Provider</span>
-                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Dart</span>
-                        </div>
-                        <div class="flex space-x-4">
-                            <a href="https://github.com/Eranda724"
-                                class="text-green-300 hover:text-green-500 transition duration-300" target="_blank">
-                                <i class="fab fa-github text-xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-12 text-center" data-aos="fade-up" data-aos-delay="400">
-                <a href="https://github.com/Eranda724"
-                    class="px-6 py-3 bg-gray-800 text-green-300 font-semibold rounded hover:bg-gray-700 transition duration-300 magnetic-btn"
-                    target="_blank">
-                    View More Projects on GitHub
-                </a>
-            </div>
+      <!-- Flutter & Mobile -->
+      <div class="mb-10" data-aos="fade-up">
+        <h3 class="skills-category-title">Flutter &amp; Mobile</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 stagger-container">
+          <div class="skill-icon p-4 rounded-lg text-center stagger-item"><i class="fas fa-mobile-alt text-4xl mb-2 text-blue-300"></i><p class="text-sm">Flutter</p><div class="skill-circle mt-2" data-value="0.88"></div></div>
+          <div class="skill-icon p-4 rounded-lg text-center stagger-item"><i class="fas fa-fire text-4xl mb-2 text-orange-400"></i><p class="text-sm">Firebase</p><div class="skill-circle mt-2" data-value="0.85"></div></div>
+          <div class="skill-icon p-4 rounded-lg text-center stagger-item"><i class="fas fa-code text-4xl mb-2 text-blue-400"></i><p class="text-sm">Dart</p><div class="skill-circle mt-2" data-value="0.85"></div></div>
+          <div class="skill-icon p-4 rounded-lg text-center stagger-item"><i class="fas fa-sitemap text-4xl mb-2 text-purple-400"></i><p class="text-sm">Provider</p><div class="skill-circle mt-2" data-value="0.82"></div></div>
+          <div class="skill-icon p-4 rounded-lg text-center stagger-item"><i class="fas fa-atom text-4xl mb-2 text-cyan-400"></i><p class="text-sm">Riverpod</p><div class="skill-circle mt-2" data-value="0.78"></div></div>
+          <div class="skill-icon p-4 rounded-lg text-center stagger-item"><i class="fas fa-map-marked-alt text-4xl mb-2 text-green-400"></i><p class="text-sm">Google Maps</p><div class="skill-circle mt-2" data-value="0.75"></div></div>
         </div>
-    </section>
+      </div>
 
-    <div class="section-divider"></div>
-
-    <!-- Certifications Section -->
-    <section id="certifications" class="py-16 bg-gray-900 bg-opacity-60">
-        <div class="max-w-5xl mx-auto px-4">
-            <h2 class="section-title" data-aos="fade-up">
-                Certifications
-                <a href="https://www.linkedin.com/in/eranda-jayasinghe/details/certifications/"
-                    class="text-green-300 underline" target="_blank">(Linkedin)</a>
-            </h2>
-            <div class="bg-gray-900 p-8 rounded-lg shadow-lg card-3d" data-aos="fade-up" data-aos-delay="200">
-                <ul class="list-disc list-inside text-gray-300 space-y-4">
-                    <li><strong>Certification Portfolio Summary:</strong> Demonstrates strong expertise in Python, web
-                        development, AI/ML, deep learning, generative AI, NLP, and cloud technologies. Completed
-                        specializations and hands-on projects in neural networks, computer vision, chatbot development,
-                        and prompt engineering, with real-world and domain-specific applications. Credentials span
-                        Coursera, DeepLearning.AI, Udemy, Microsoft, and SoloLearn.</li>
-                    <li><strong>Main Specializations:</strong>
-                        <ul class="ml-6 list-disc">
-                            <li>NLP Specialization: <a
-                                    href="https://www.coursera.org/account/accomplishments/specialization/HSY9ZVVQV5NR"
-                                    class="text-green-300 underline" target="_blank">Coursera Certificate</a></li>
-                            <li>Machine Learning Specialization: <a
-                                    href="https://www.coursera.org/account/accomplishments/specialization/P7NLVZW3WZ82"
-                                    class="text-green-300 underline" target="_blank">Coursera Certificate</a></li>
-                            <li>Deep Learning Mastery: <a
-                                    href="https://www.udemy.com/certificate/UC-cb3b0f36-0dd1-467b-bba5-dd0309514bb1/"
-                                    class="text-green-300 underline" target="_blank">Udemy Certificate</a></li>
-                            <li>LLM Game (DeepLearning.AI): <a
-                                    href="https://learn.deeplearning.ai/accomplishments/b7b1868c-3295-4d39-af38-2adad560d2ca?usp=sharing"
-                                    class="text-green-300 underline" target="_blank">DeepLearning.AI Certificate</a>
-                            </li>
-                            <li>AWS Bedrock: <a
-                                    href="https://www.udemy.com/certificate/UC-84c80c95-7bae-44f6-b234-f6aee9d9810a/"
-                                    class="text-green-300 underline" target="_blank">Udemy Certificate</a></li>
-                        </ul>
-                    </li>
-                    <li><strong>Programming & Software Development:</strong> Python (HackerRank, Microsoft), Web
-                        Development (Azure, Microsoft Cloud Concepts)</li>
-                    <li><strong>AI, Machine Learning & Deep Learning:</strong> Neural Networks and Deep Learning
-                        (DeepLearning.AI), Mastering Machine Learning (Udemy), WhatsApp Chat Sentiment Analysis, Chatbot
-                        Using ML from Scratch (TensorFlow & Keras), Self-Driving Car Case Studies (Computer Vision)</li>
-                    <li><strong>Generative AI & Prompt Engineering:</strong> Generative AI for All (Udemy), GenAI 101
-                        with Pieces (Pieces for Developers)</li>
-                    <li><strong>Chatbot & Cloud Integration:</strong> Chatbot Development with Azure AI Foundry,
-                        Introduction to Large Language Models (Simplilearn)</li>
-                    <li><strong>Tools & Platforms:</strong> Microsoft Azure (multiple certifications), Visual Studio
-                        Code, GitHub, Google Cloud / Microsoft Cloud fundamentals</li>
-                    <li><strong>Other Highlights:</strong> GenAI 101 with Pieces, project-focused computer vision,
-                        WhatsApp Chat Sentiment Analysis, Flipkart Review Sentiment & Spam Detection, Chatbot
-                        development, heart disease and diabetes detection models, neural networks with
-                        Python/TensorFlow/Keras, linear algebra for ML, mini projects (spam detection, neural network
-                        dev on GitHub)</li>
-                    <li><strong>Selected Individual Certificates:</strong>
-                        <ul class="ml-6 list-disc">
-                            <li>Machine Learning Specialization (DeepLearning.AI, May 2024): Neural Networks, CNNs,
-                                Computer Vision, Supervised & Unsupervised Learning, Recommenders, Reinforcement
-                                Learning (TensorFlow, Keras)</li>
-                            <li>Python Intermediate (SoloLearn, April 2024): Data structures, control flow, functions
-                            </li>
-                            <li>Mathematics for Machine Learning: Linear Algebra (Imperial College London, Coursera, Feb
-                                2024): Matrices, eigenvalues, vector spaces</li>
-                            <li>Java Intermediate (SoloLearn, Dec 2023): Java fundamentals, GUI programming, GitHub
-                                projects</li>
-                            <li>MS Office Specialist Certification (SLISEA College, Oct 2021): Word, Excel, PowerPoint
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+      <!-- Web Development -->
+      <div class="mb-10" data-aos="fade-up">
+        <h3 class="skills-category-title">Web Development</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 stagger-container">
+          <div class="skill-icon p-4 rounded-lg text-center stagger-item"><i class="fab fa-react text-4xl mb-2 text-blue-400"></i><p class="text-sm">React</p><div class="skill-circle mt-2" data-value="0.80"></div></div>
+          <div class="skill-icon p-4 rounded-lg text-center stagger-item"><i class="fab fa-html5 text-4xl mb-2 text-orange-500"></i><p class="text-sm">HTML</p><div class="skill-circle mt-2" data-value="0.90"></div></div>
+          <div class="skill-icon p-4 rounded-lg text-center stagger-item"><i class="fab fa-css3-alt text-4xl mb-2 text-blue-500"></i><p class="text-sm">CSS</p><div class="skill-circle mt-2" data-value="0.85"></div></div>
+          <div class="skill-icon p-4 rounded-lg text-center stagger-item"><i class="fas fa-leaf text-4xl mb-2 text-green-500"></i><p class="text-sm">Spring Boot</p><div class="skill-circle mt-2" data-value="0.75"></div></div>
+          <div class="skill-icon p-4 rounded-lg text-center stagger-item"><i class="fab fa-php text-4xl mb-2 text-purple-400"></i><p class="text-sm">PHP</p><div class="skill-circle mt-2" data-value="0.70"></div></div>
+          <div class="skill-icon p-4 rounded-lg text-center stagger-item"><i class="fas fa-database text-4xl mb-2 text-blue-400"></i><p class="text-sm">MySQL</p><div class="skill-circle mt-2" data-value="0.80"></div></div>
         </div>
-    </section>
+      </div>
 
-    <div class="section-divider"></div>
-
-    <!-- Awards/Activities Section -->
-    <section id="awards" class="py-16 bg-gray-900 bg-opacity-60">
-        <div class="max-w-5xl mx-auto px-4">
-            <h2 class="section-title" data-aos="fade-up">
-                Awards/Activities <a href="https://www.linkedin.com/in/eranda-jayasinghe/details/honors/"
-                    class="text-green-300 underline">(Linkedin)</a>
-            </h2>
-            <div class="bg-gray-900 p-8 rounded-lg shadow-lg card-3d" data-aos="fade-up" data-aos-delay="200">
-                <p class="text-gray-300 leading-relaxed mb-2">
-                    Participated in coding competitions and hackathons such as:
-                </p>
-                <ul class="list-disc list-inside text-gray-300 space-y-2">
-                    <li>MoraXtreme 9.0 (Sri Lanka Rank: 82, Team ViperBytes)</li>
-                    <li>CodeRally 5.0 (Sri Lanka Rank: 12, Team Code_Mazer)</li>
-                    <li>SpiritX 2025 (participated Stage 1 web development hackathon)</li>
-                </ul>
-            </div>
+      <!-- Cloud & Backend -->
+      <div class="mb-10" data-aos="fade-up">
+        <h3 class="skills-category-title">Cloud &amp; Backend</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 stagger-container">
+          <div class="skill-icon p-4 rounded-lg text-center stagger-item"><i class="fas fa-flask text-4xl mb-2 text-green-400"></i><p class="text-sm">Flask</p><div class="skill-circle mt-2" data-value="0.85"></div></div>
+          <div class="skill-icon p-4 rounded-lg text-center stagger-item"><i class="fab fa-aws text-4xl mb-2 text-yellow-400"></i><p class="text-sm">AWS</p><div class="skill-circle mt-2" data-value="0.80"></div></div>
+          <div class="skill-icon p-4 rounded-lg text-center stagger-item"><i class="fab fa-microsoft text-4xl mb-2 text-blue-500"></i><p class="text-sm">Azure</p><div class="skill-circle mt-2" data-value="0.75"></div></div>
+          <div class="skill-icon p-4 rounded-lg text-center stagger-item"><i class="fab fa-docker text-4xl mb-2 text-blue-400"></i><p class="text-sm">Docker</p><div class="skill-circle mt-2" data-value="0.70"></div></div>
         </div>
-    </section>
+      </div>
 
-    <div class="section-divider"></div>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-black bg-opacity-60">
-        <div class="container mx-auto px-4">
-            <h2 class="section-title" data-aos="fade-up">
-                Contact <span class="text-green-300">Me</span>
-            </h2>
-
-            <!-- Professional Summary -->
-            <div class="max-w-4xl mx-auto mb-12 bg-gray-900 p-8 rounded-lg shadow-lg card-3d" data-aos="fade-up"
-                data-aos-delay="200">
-                <h3 class="text-xl font-semibold mb-4 text-green-300">Professional Summary</h3>
-                <p class="text-gray-300 leading-relaxed">
-                    I'm passionate about building real-world AI solutions, especially using NLP, generative AI, and
-                    LLMs. With a background in Computer Engineering and hands-on project experience, I focus on creating
-                    scalable, cloud-based AI systems using tools like Flask, React, and AWS. I'm particularly interested
-                    in full-stack AI development, prompt engineering, and deploying intelligent applications that solve
-                    real problems. My goal is to work in roles like ML Engineer or Generative AI Specialist, where I can
-                    keep innovating and contribute to impactful, ethical AI products.
-                </p>
-            </div>
-
-            <!-- Contact Information -->
-            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                <div class="bg-gray-900 p-8 rounded-lg shadow-lg card-3d" data-aos="fade-up" data-aos-delay="300">
-                    <h3 class="text-xl font-semibold mb-6 text-green-300">Get in Touch</h3>
-                    <div class="space-y-4">
-                        <div class="flex items-center space-x-4">
-                            <i class="fas fa-envelope text-green-300 text-xl"></i>
-                            <a href="mailto:erandajayasinghe724@gmail.com"
-                                class="text-gray-300 hover:text-green-300 transition duration-300">
-                                erandajayasinghe724@gmail.com
-                            </a>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <i class="fas fa-phone text-green-300 text-xl"></i>
-                            <a href="tel:+94763651754"
-                                class="text-gray-300 hover:text-green-300 transition duration-300">
-                                +94 763651754
-                            </a>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <i class="fas fa-map-marker-alt text-green-300 text-xl"></i>
-                            <span class="text-gray-300">Rikillagaskada, Central Province, Sri Lanka</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-gray-900 p-8 rounded-lg shadow-lg card-3d" data-aos="fade-up" data-aos-delay="400">
-                    <h3 class="text-xl font-semibold mb-6 text-green-300">Connect With Me</h3>
-                    <div class="space-y-4">
-                        <div class="flex items-center space-x-4">
-                            <i class="fab fa-github text-green-300 text-xl"></i>
-                            <a href="https://github.com/Eranda724" target="_blank"
-                                class="text-gray-300 hover:text-green-300 transition duration-300">
-                                github.com/Eranda724
-                            </a>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <i class="fab fa-linkedin text-green-300 text-xl"></i>
-                            <a href="https://linkedin.com/in/eranda-jayasinghe" target="_blank"
-                                class="text-gray-300 hover:text-green-300 transition duration-300">
-                                linkedin.com/in/eranda-jayasinghe
-                            </a>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <i class="fas fa-certificate text-green-300 text-xl"></i>
-                            <span class="text-gray-300">20+ AI/ML Certifications</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <!-- Tools -->
+      <div data-aos="fade-up">
+        <h3 class="skills-category-title">Development Tools</h3>
+        <div class="flex flex-wrap gap-3">
+          <span class="tool-tag">Git</span><span class="tool-tag">GitHub</span>
+          <span class="tool-tag">VS Code</span><span class="tool-tag">Android Studio</span>
+          <span class="tool-tag">Jupyter</span><span class="tool-tag">Postman</span>
+          <span class="tool-tag">Docker</span><span class="tool-tag">Maven</span>
+          <span class="tool-tag">npm</span><span class="tool-tag">Figma</span>
         </div>
-    </section>
+      </div>
 
-    <!-- Back to Top Button -->
-    <a href="#" class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </a>
+    </div>
+  </section>
 
-    <!-- Particles.js for background effect -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" defer></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            if (typeof particlesJS !== 'undefined') {
-                particlesJS("particles-js", {
-                    particles: {
-                        number: { value: 50, density: { enable: true, value_area: 1000 } },
-                        color: { value: "#00ff9d" },
-                        shape: { type: "circle" },
-                        opacity: { value: 0.08, random: true },
-                        size: { value: 2, random: true },
-                        line_linked: {
-                            enable: true,
-                            distance: 150,
-                            color: "#00ff9d",
-                            opacity: 0.08,
-                            width: 1
-                        },
-                        move: {
-                            enable: true,
-                            speed: 0.8,
-                            direction: "none",
-                            random: true,
-                            straight: false,
-                            out_mode: "out",
-                            bounce: false
-                        }
-                    },
-                    interactivity: {
-                        detect_on: "canvas",
-                        events: {
-                            onhover: { enable: true, mode: "grab" },
-                            onclick: { enable: true, mode: "push" },
-                            resize: true
-                        },
-                        modes: {
-                            grab: { distance: 120, line_linked: { opacity: 0.2 } },
-                            push: { particles_nb: 3 }
-                        }
-                    },
-                    retina_detect: true
-                });
-            }
+  <div class="section-divider"></div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       PROJECTS — AI & ML
+  ═══════════════════════════════════════════════════════ -->
+  <section id="projects" class="py-20 bg-black bg-opacity-60">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="section-title" data-aos="fade-up">Featured Projects</h2>
+
+      <h3 class="projects-category-title" data-aos="fade-up">🤖 AI &amp; Machine Learning</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+
+        <div class="project-card card-3d" data-aos="fade-up" data-aos-delay="100">
+          <div class="p-6">
+            <h3 class="project-title">Plant Leaf Disease Detection System</h3>
+            <p class="text-gray-300 mb-4 text-sm leading-relaxed">Real-time detection using YOLOv5 for leaf detection and TensorFlow for disease classification. Multi-page Streamlit interface with live camera-based recognition.</p>
+            <div class="flex flex-wrap gap-2 mb-4"><span class="tech-tag">Python</span><span class="tech-tag">YOLOv5</span><span class="tech-tag">TensorFlow</span><span class="tech-tag">Streamlit</span></div>
+            <a href="https://github.com/Eranda724/Plant-Disease-Detection-System" target="_blank" class="project-link"><i class="fab fa-github text-xl"></i></a>
+          </div>
+        </div>
+
+        <div class="project-card card-3d" data-aos="fade-up" data-aos-delay="150">
+          <div class="p-6">
+            <h3 class="project-title">English SpellChecker Flask App</h3>
+            <p class="text-gray-300 mb-4 text-sm leading-relaxed">Corpus-based auto-correction using the Leipzig English dataset. Edit distance algorithm for word suggestions with a lightweight Flask web interface.</p>
+            <div class="flex flex-wrap gap-2 mb-4"><span class="tech-tag">Python</span><span class="tech-tag">Flask</span><span class="tech-tag">NLP</span><span class="tech-tag">PyTorch</span></div>
+            <a href="https://github.com/Eranda724/Developing-Auto-Correct-Sinhala" target="_blank" class="project-link"><i class="fab fa-github text-xl"></i></a>
+          </div>
+        </div>
+
+        <div class="project-card card-3d" data-aos="fade-up" data-aos-delay="200">
+          <div class="p-6">
+            <h3 class="project-title">Local RAG PDF Chatbot</h3>
+            <p class="text-gray-300 mb-4 text-sm leading-relaxed">Local RAG pipeline using LangChain and Ollama for PDF document interaction. Context-aware summaries with secure local document handling.</p>
+            <div class="flex flex-wrap gap-2 mb-4"><span class="tech-tag">Python</span><span class="tech-tag">LangChain</span><span class="tech-tag">Ollama</span><span class="tech-tag">Chroma</span></div>
+            <a href="https://github.com/Eranda724/LLM-RAG-model-Pdf-ChatBot" target="_blank" class="project-link"><i class="fab fa-github text-xl"></i></a>
+          </div>
+        </div>
+
+        <div class="project-card card-3d" data-aos="fade-up" data-aos-delay="250">
+          <div class="p-6">
+            <h3 class="project-title">AI Chatbot for Attendance Management</h3>
+            <p class="text-gray-300 mb-4 text-sm leading-relaxed">AI-powered chatbot using Flask and PyTorch with custom intent training. NLP features including tokenization and stemming with RESTful API.</p>
+            <div class="flex flex-wrap gap-2 mb-4"><span class="tech-tag">Python</span><span class="tech-tag">Flask</span><span class="tech-tag">PyTorch</span><span class="tech-tag">NLP</span></div>
+            <a href="https://github.com/Eranda724/Ai-ChatBot-for-Attendance-Management-System-website" target="_blank" class="project-link"><i class="fab fa-github text-xl"></i></a>
+          </div>
+        </div>
+
+        <div class="project-card card-3d" data-aos="fade-up" data-aos-delay="300">
+          <div class="p-6">
+            <h3 class="project-title">CNN-LSTM Image Caption Generator</h3>
+            <p class="text-gray-300 mb-4 text-sm leading-relaxed">Image captioning model using ResNet101 and LSTM on the Flickr8k dataset. Teacher forcing, greedy decoding, and comprehensive Jupyter workflow.</p>
+            <div class="flex flex-wrap gap-2 mb-4"><span class="tech-tag">Python</span><span class="tech-tag">PyTorch</span><span class="tech-tag">ResNet101</span><span class="tech-tag">LSTM</span></div>
+            <a href="https://github.com/Eranda724/CNN-LSTM-Image-Caption-Generator" target="_blank" class="project-link"><i class="fab fa-github text-xl"></i></a>
+          </div>
+        </div>
+
+        <div class="project-card card-3d" data-aos="fade-up" data-aos-delay="350">
+          <div class="p-6">
+            <h3 class="project-title">Seamless AI Multi-Modal Platform</h3>
+            <p class="text-gray-300 mb-4 text-sm leading-relaxed">Custom GPT-powered AI platform supporting document Q&amp;A, summarization, semantic search, and real-time voice translation (English → Sinhala) across 50+ files.</p>
+            <div class="flex flex-wrap gap-2 mb-4"><span class="tech-tag">LangChain</span><span class="tech-tag">Ollama</span><span class="tech-tag">Whisper</span><span class="tech-tag">ChromaDB</span><span class="tech-tag">Streamlit</span></div>
+            <a href="https://github.com/Eranda724" target="_blank" class="project-link"><i class="fab fa-github text-xl"></i></a>
+          </div>
+        </div>
+
+        <div class="project-card card-3d" data-aos="fade-up" data-aos-delay="400">
+          <div class="p-6">
+            <span class="ongoing-badge">Ongoing Research</span>
+            <h3 class="project-title mt-2">Skin Cancer Detection with Deep Learning</h3>
+            <p class="text-gray-300 mb-4 text-sm leading-relaxed">Training CNN models (EfficientNet-B0, ResNet-50, InceptionV3, AlexNet) on the ISIC 2024 dataset using CLAHE preprocessing and Deep-SMOTE class balancing.</p>
+            <div class="flex flex-wrap gap-2 mb-4"><span class="tech-tag">TensorFlow</span><span class="tech-tag">Keras</span><span class="tech-tag">OpenCV</span><span class="tech-tag">CLAHE</span><span class="tech-tag">Deep-SMOTE</span></div>
+            <a href="https://github.com/Eranda724" target="_blank" class="project-link"><i class="fab fa-github text-xl"></i></a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Web Dev Projects -->
+      <h3 class="projects-category-title" data-aos="fade-up">🌐 Web Development</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <div class="project-card card-3d" data-aos="fade-up" data-aos-delay="100">
+          <div class="p-6">
+            <h3 class="project-title">Student Attendance Management System</h3>
+            <p class="text-gray-300 mb-4 text-sm leading-relaxed">Comprehensive web-based system for managing student attendance, courses, and lectures with report generation and secure authentication.</p>
+            <div class="flex flex-wrap gap-2 mb-4"><span class="tech-tag">HTML</span><span class="tech-tag">CSS</span><span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span></div>
+            <a href="https://github.com/Eranda724/Student-Attendence-Management-System" target="_blank" class="project-link"><i class="fab fa-github text-xl"></i></a>
+          </div>
+        </div>
+
+        <div class="project-card card-3d" data-aos="fade-up" data-aos-delay="150">
+          <div class="p-6">
+            <h3 class="project-title">Real-Time Video Conferencing App</h3>
+            <p class="text-gray-300 mb-4 text-sm leading-relaxed">Feature-rich video conferencing with WebRTC and Socket.IO. Multi-user video chat, screen sharing, text chat, and responsive cross-device design.</p>
+            <div class="flex flex-wrap gap-2 mb-4"><span class="tech-tag">JavaScript</span><span class="tech-tag">WebRTC</span><span class="tech-tag">Socket.IO</span><span class="tech-tag">Express.js</span></div>
+            <div class="flex gap-4">
+              <a href="https://github.com/Eranda724/Real-Time-Video-Conferencing-Application-using-WebRTC" target="_blank" class="project-link"><i class="fab fa-github text-xl"></i></a>
+              <a href="https://lnkd.in/gPZV9KmN" class="project-link"><i class="fas fa-external-link-alt text-xl"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card card-3d" data-aos="fade-up" data-aos-delay="200">
+          <div class="p-6">
+            <h3 class="project-title">Bookify Universal Booking System</h3>
+            <p class="text-gray-300 mb-4 text-sm leading-relaxed">Robust backend booking system using Spring Boot with MySQL for structured data storage and RESTful APIs for modular booking operations.</p>
+            <div class="flex flex-wrap gap-2 mb-4"><span class="tech-tag">Spring Boot</span><span class="tech-tag">Java</span><span class="tech-tag">MySQL</span><span class="tech-tag">REST API</span></div>
+            <a href="https://github.com/Eranda724/Bookify-Staging-FullStack" target="_blank" class="project-link"><i class="fab fa-github text-xl"></i></a>
+          </div>
+        </div>
+
+        <div class="project-card card-3d" data-aos="fade-up" data-aos-delay="250">
+          <div class="p-6">
+            <h3 class="project-title">Bag Store — React E-Commerce Platform</h3>
+            <p class="text-gray-300 mb-4 text-sm leading-relaxed">Full-stack e-commerce web app with product browsing, cart management, secure checkout, order tracking, user profiles, and admin dashboard.</p>
+            <div class="flex flex-wrap gap-2 mb-4"><span class="tech-tag">React</span><span class="tech-tag">Firebase</span><span class="tech-tag">Context API</span><span class="tech-tag">JavaScript</span></div>
+            <a href="https://github.com/Eranda724" target="_blank" class="project-link"><i class="fab fa-github text-xl"></i></a>
+          </div>
+        </div>
+
+        <div class="project-card card-3d" data-aos="fade-up" data-aos-delay="300">
+          <div class="p-6">
+            <h3 class="project-title">Uni Kade — University Food Marketplace</h3>
+            <p class="text-gray-300 mb-4 text-sm leading-relaxed">Campus marketplace with role-based access (Student/Seller/Admin), real-time order notifications, inventory management, and live order status tracking.</p>
+            <div class="flex flex-wrap gap-2 mb-4"><span class="tech-tag">Node.js</span><span class="tech-tag">MongoDB</span><span class="tech-tag">React</span><span class="tech-tag">Socket.io</span></div>
+            <a href="https://github.com/Eranda724" target="_blank" class="project-link"><i class="fab fa-github text-xl"></i></a>
+          </div>
+        </div>
+
+      </div>
+
+      
+      <!-- Mobile Dev Projects -->
+      <h3 class="projects-category-title" data-aos="fade-up">📱 Mobile Development</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="project-card card-3d" data-aos="fade-up" data-aos-delay="100">
+          <div class="flutter-card-accent"></div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <i class="fas fa-utensils" style="color:var(--primary-color)"></i>
+              <span class="text-xs text-gray-400 uppercase tracking-wider">Food &amp; Delivery</span>
+            </div>
+            <h3 class="project-title">Ariviyal Nagar Food Ordering App</h3>
+            <p class="text-gray-300 mb-4 text-sm leading-relaxed">Mobile food ordering app with OTP authentication, real-time cart management, Google Maps integration, order tracking, and a dedicated shop-owner dashboard.</p>
+            <div class="flex flex-wrap gap-2 mb-4"><span class="tech-tag">Flutter</span><span class="tech-tag">Firebase</span><span class="tech-tag">Google Maps</span><span class="tech-tag">Provider</span><span class="tech-tag">Dart</span></div>
+            <a href="https://github.com/Eranda724" target="_blank" class="project-link"><i class="fab fa-github text-xl"></i></a>
+          </div>
+        </div>
+
+        <div class="project-card card-3d" data-aos="fade-up" data-aos-delay="200">
+          <div class="flutter-card-accent"></div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <i class="fas fa-fish" style="color:var(--primary-color)"></i>
+              <span class="text-xs text-gray-400 uppercase tracking-wider">Productivity &amp; Wellness</span>
+            </div>
+            <h3 class="project-title">AquaFocus — Gamified Focus App</h3>
+            <p class="text-gray-300 mb-4 text-sm leading-relaxed">Gamified productivity app with aquarium-themed rewards. Users earn Aqua Coins and unlock virtual fish through focus sessions with daily streak tracking.</p>
+            <div class="flex flex-wrap gap-2 mb-4"><span class="tech-tag">Flutter</span><span class="tech-tag">Firebase</span><span class="tech-tag">Riverpod</span><span class="tech-tag">FlChart</span><span class="tech-tag">Dart</span></div>
+            <a href="https://github.com/Eranda724" target="_blank" class="project-link"><i class="fab fa-github text-xl"></i></a>
+          </div>
+        </div>
+
+        <div class="project-card card-3d" data-aos="fade-up" data-aos-delay="300">
+          <div class="flutter-card-accent"></div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <i class="fas fa-scissors" style="color:var(--primary-color)"></i>
+              <span class="text-xs text-gray-400 uppercase tracking-wider">Business Management</span>
+            </div>
+            <h3 class="project-title">Machiment — Tailoring Management System</h3>
+            <p class="text-gray-300 mb-4 text-sm leading-relaxed">Premium order management for tailoring businesses. Smart measurement templates, real-time Firestore sync, bilingual support (EN/SI), and premium dark/light UI.</p>
+            <div class="flex flex-wrap gap-2 mb-4"><span class="tech-tag">Flutter</span><span class="tech-tag">Firebase Firestore</span><span class="tech-tag">Provider</span><span class="tech-tag">Dart</span></div>
+            <a href="https://github.com/Eranda724" target="_blank" class="project-link"><i class="fab fa-github text-xl"></i></a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-12 text-center" data-aos="fade-up">
+        <a href="https://github.com/Eranda724" target="_blank" class="btn-outline magnetic-btn inline-flex items-center gap-2">
+          <i class="fab fa-github"></i> View All Projects on GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       CERTIFICATIONS
+  ═══════════════════════════════════════════════════════ -->
+  <section id="certifications" class="py-20 bg-black bg-opacity-60">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="section-title" data-aos="fade-up">Certifications</h2>
+      <p class="text-center text-gray-400 mb-8 -mt-6" data-aos="fade-up">
+        <a href="https://www.linkedin.com/in/eranda-jayasinghe/details/certifications/" target="_blank" class="text-[var(--primary-color)] hover:underline">
+          <i class="fab fa-linkedin mr-1"></i> View all on LinkedIn
+        </a>
+      </p>
+
+      <div class="card card-3d" data-aos="fade-up" data-aos-delay="200">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div>
+            <h3 class="text-lg font-bold mb-4" style="color:var(--primary-color)">Major Specializations</h3>
+            <ul class="space-y-3">
+              <li class="cert-item"><i class="fas fa-certificate mr-2" style="color:var(--primary-color)"></i><a href="https://www.coursera.org/account/accomplishments/specialization/HSY9ZVVQV5NR" target="_blank" class="hover:text-[var(--primary-color)] transition-colors">NLP Specialization — Coursera</a></li>
+              <li class="cert-item"><i class="fas fa-certificate mr-2" style="color:var(--primary-color)"></i><a href="https://www.coursera.org/account/accomplishments/specialization/P7NLVZW3WZ82" target="_blank" class="hover:text-[var(--primary-color)] transition-colors">Machine Learning Specialization — Coursera</a></li>
+              <li class="cert-item"><i class="fas fa-certificate mr-2" style="color:var(--primary-color)"></i><a href="https://www.udemy.com/certificate/UC-cb3b0f36-0dd1-467b-bba5-dd0309514bb1/" target="_blank" class="hover:text-[var(--primary-color)] transition-colors">Deep Learning Mastery — Udemy</a></li>
+              <li class="cert-item"><i class="fas fa-certificate mr-2" style="color:var(--primary-color)"></i><a href="https://learn.deeplearning.ai/accomplishments/b7b1868c-3295-4d39-af38-2adad560d2ca?usp=sharing" target="_blank" class="hover:text-[var(--primary-color)] transition-colors">LLM Game — DeepLearning.AI</a></li>
+              <li class="cert-item"><i class="fas fa-certificate mr-2" style="color:var(--primary-color)"></i><a href="https://www.udemy.com/certificate/UC-84c80c95-7bae-44f6-b234-f6aee9d9810a/" target="_blank" class="hover:text-[var(--primary-color)] transition-colors">AWS Bedrock — Udemy</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-4" style="color:var(--primary-color)">Domains Covered</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="tool-tag">Python</span><span class="tool-tag">Deep Learning</span>
+              <span class="tool-tag">Computer Vision</span><span class="tool-tag">NLP</span>
+              <span class="tool-tag">Generative AI</span><span class="tool-tag">Prompt Engineering</span>
+              <span class="tool-tag">AWS Bedrock</span><span class="tool-tag">Azure AI</span>
+              <span class="tool-tag">Linear Algebra</span><span class="tool-tag">Chatbot Dev</span>
+              <span class="tool-tag">LLMs</span><span class="tool-tag">MLOps</span>
+            </div>
+            <p class="text-gray-400 text-sm mt-4">Credentials span <strong class="text-white">Coursera</strong>, <strong class="text-white">DeepLearning.AI</strong>, <strong class="text-white">Udemy</strong>, <strong class="text-white">Microsoft</strong>, and <strong class="text-white">SoloLearn</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       AWARDS
+  ═══════════════════════════════════════════════════════ -->
+  <section id="awards" class="py-20 bg-gray-900 bg-opacity-60">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="section-title" data-aos="fade-up">Awards &amp; Activities</h2>
+      <p class="text-center text-gray-400 mb-8 -mt-6" data-aos="fade-up">
+        <a href="https://www.linkedin.com/in/eranda-jayasinghe/details/honors/" target="_blank" class="text-[var(--primary-color)] hover:underline">
+          <i class="fab fa-linkedin mr-1"></i> View all on LinkedIn
+        </a>
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="card card-3d text-center">
+          <div class="text-4xl mb-4">🏆</div>
+          <h3 class="text-lg font-bold text-white mb-1">MoraXtreme 9.0</h3>
+          <p class="text-[var(--primary-color)] font-semibold text-sm mb-2">Sri Lanka Rank: 82</p>
+          <p class="text-gray-400 text-sm">Team ViperBytes</p>
+        </div>
+        <div class="card card-3d text-center">
+          <div class="text-4xl mb-4">🥇</div>
+          <h3 class="text-lg font-bold text-white mb-1">CodeRally 5.0</h3>
+          <p class="text-[var(--primary-color)] font-semibold text-sm mb-2">Sri Lanka Rank: 12</p>
+          <p class="text-gray-400 text-sm">Team Code_Mazer</p>
+        </div>
+        <div class="card card-3d text-center">
+          <div class="text-4xl mb-4">💻</div>
+          <h3 class="text-lg font-bold text-white mb-1">SpiritX 2025</h3>
+          <p class="text-[var(--primary-color)] font-semibold text-sm mb-2">Participant</p>
+          <p class="text-gray-400 text-sm">Stage 1 Web Dev Hackathon</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       CONTACT
+  ═══════════════════════════════════════════════════════ -->
+  <section id="contact" class="py-20 bg-black bg-opacity-60">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="section-title" data-aos="fade-up">Contact Me</h2>
+
+      <div class="card card-3d mb-8" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="text-lg font-bold mb-3" style="color:var(--primary-color)">Professional Summary</h3>
+        <p class="text-gray-300 leading-relaxed">
+          I'm passionate about building real-world AI solutions using NLP, Generative AI, and LLMs. I also build
+          production-ready Flutter mobile apps with Firebase backends. With a Computer Engineering background and
+          hands-on project experience, my goal is to work as an ML Engineer or Generative AI Specialist — contributing
+          to impactful, ethical AI products.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="card card-3d" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="text-lg font-bold mb-6" style="color:var(--primary-color)">Get in Touch</h3>
+          <div class="space-y-4">
+            <div class="contact-item">
+              <i class="fas fa-envelope contact-icon"></i>
+              <a href="mailto:erandajayasinghe724@gmail.com" class="contact-link">erandajayasinghe724@gmail.com</a>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone contact-icon"></i>
+              <a href="tel:+94763651754" class="contact-link">+94 763 651 754</a>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt contact-icon"></i>
+              <span class="text-gray-300">Rikillagaskada, Central Province, Sri Lanka</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-3d" data-aos="fade-up" data-aos-delay="300">
+          <h3 class="text-lg font-bold mb-6" style="color:var(--primary-color)">Connect With Me</h3>
+          <div class="space-y-4">
+            <div class="contact-item">
+              <i class="fab fa-github contact-icon"></i>
+              <a href="https://github.com/Eranda724" target="_blank" class="contact-link">github.com/Eranda724</a>
+            </div>
+            <div class="contact-item">
+              <i class="fab fa-linkedin contact-icon"></i>
+              <a href="https://linkedin.com/in/eranda-jayasinghe" target="_blank" class="contact-link">linkedin.com/in/eranda-jayasinghe</a>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-certificate contact-icon"></i>
+              <span class="text-gray-300">20+ AI/ML Certifications</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Back to Top -->
+  <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+  <!-- Animation & Particle Libraries -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.0/dist/progressbar.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof particlesJS !== 'undefined') {
+        particlesJS("particles-js", {
+          particles: {
+            number: { value: 50, density: { enable: true, value_area: 1000 } },
+            color: { value: "#00ff9d" },
+            shape: { type: "circle" },
+            opacity: { value: 0.07, random: true },
+            size: { value: 2, random: true },
+            line_linked: { enable: true, distance: 150, color: "#00ff9d", opacity: 0.07, width: 1 },
+            move: { enable: true, speed: 0.8, random: true, out_mode: "out" }
+          },
+          interactivity: {
+            detect_on: "canvas",
+            events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" }, resize: true },
+            modes: { grab: { distance: 120, line_linked: { opacity: 0.2 } }, push: { particles_nb: 3 } }
+          },
+          retina_detect: true
         });
-    </script>
+      }
+    });
 
-    <!-- Custom JavaScript -->
-    <script src="script.js" defer></script>
+    // ── Accordion ──────────────────────────────────────────
+    function toggleAccordion(btn) {
+      const content  = btn.nextElementSibling;
+      const chevron  = btn.querySelector('.accordion-chevron');
+      const isOpen   = content.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('open'));
+      document.querySelectorAll('.accordion-chevron').forEach(i => i.style.transform = 'rotate(0deg)');
+
+      // Open clicked if it was closed
+      if (!isOpen) {
+        content.classList.add('open');
+        chevron.style.transform = 'rotate(180deg)';
+      }
+    }
+  </script>
+
+  <script src="script.js"></script>
 </body>
-
 </html>
-
-
-
-
