@@ -1054,6 +1054,79 @@ section::before {
 }
 
 /* ═══════════════════════════════════════════════════════
+   FLOATING ACTION BUTTONS
+═══════════════════════════════════════════════════════ */
+.download-cv-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 88px; /* Placed left of the back-to-top button */
+  height: 46px;
+  padding: 0 1.2rem;
+  color: var(--primary-color);
+  border-radius: 23px; /* Pill shape */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 100;
+  border: none;
+  background: transparent;
+  text-decoration: none;
+}
+
+.download-cv-btn::before {
+  content: '';
+  position: absolute;
+  inset: -2px; /* Border thickness */
+  border-radius: 25px;
+  background: linear-gradient(90deg, transparent, var(--primary-color), var(--gradient-mid), transparent, var(--primary-color));
+  background-size: 200% 100%;
+  animation: lightningBorder 2s linear infinite;
+  z-index: -2;
+}
+
+.download-cv-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 23px;
+  background: rgba(10, 15, 20, 0.95); /* Dark center to hide inner gradient */
+  backdrop-filter: blur(8px);
+  z-index: -1;
+  transition: background 0.3s ease;
+}
+
+.download-cv-btn * {
+  z-index: 1; /* Make sure text and icon are above the background */
+  position: relative;
+}
+
+@keyframes lightningBorder {
+  0% { background-position: 200% 0; }
+  100% { background-position: 0% 0; }
+}
+
+.download-cv-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 255, 157, 0.4);
+  color: #fff;
+}
+
+.download-cv-btn:hover::before {
+  background: linear-gradient(90deg, var(--primary-color), var(--gradient-mid), var(--gradient-end), var(--primary-color));
+  background-size: 300% 100%;
+  animation: lightningBorder 1s linear infinite; /* Speeds up on hover */
+}
+
+.download-cv-btn:hover::after {
+  background: rgba(0, 255, 157, 0.15); /* Lights up the center slightly on hover */
+}
+
+/* ═══════════════════════════════════════════════════════
    BACK TO TOP
 ═══════════════════════════════════════════════════════ */
 .back-to-top {
