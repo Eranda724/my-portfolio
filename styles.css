@@ -217,10 +217,12 @@ section::before {
 
 .hero-bg-text {
   position: absolute;
-  top: 6rem; /* Slightly lower to clear navbar */
+  top: 6rem;
+  /* Slightly lower to clear navbar */
   white-space: nowrap;
   font-family: var(--font-heading);
-  font-size: clamp(3rem, 8vw, 8rem); /* Slightly smaller minimum font size for mobile */
+  font-size: clamp(3rem, 8vw, 8rem);
+  /* Slightly smaller minimum font size for mobile */
   font-weight: 900;
 
   /* Vibrant Gradient Fill */
@@ -236,7 +238,8 @@ section::before {
 }
 
 .hero-bg-text--reverse {
-  top: 28rem; /* Position below profile picture */
+  top: 28rem;
+  /* Position below profile picture */
   bottom: auto;
   background: linear-gradient(90deg, rgba(74, 154, 255, 0.25), rgba(121, 40, 202, 0.25));
   -webkit-background-clip: text;
@@ -248,10 +251,13 @@ section::before {
 
 @media (max-width: 767px) {
   .hero-bg-text {
-    top: 5rem; /* Tucked closer to top on mobile */
+    top: 5rem;
+    /* Tucked closer to top on mobile */
   }
+
   .hero-bg-text--reverse {
-    top: 24rem; /* Pulled up closer to the smaller profile picture on mobile */
+    top: 24rem;
+    /* Pulled up closer to the smaller profile picture on mobile */
   }
 }
 
@@ -1054,16 +1060,56 @@ section::before {
 }
 
 /* ═══════════════════════════════════════════════════════
+   FIXED FOOTER
+═══════════════════════════════════════════════════════ */
+.fixed-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(5, 5, 5, 0.85);
+  backdrop-filter: blur(10px);
+  z-index: 90;
+  text-align: center;
+}
+
+.footer-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+  /* Static (non-animated) line as requested */
+}
+
+.footer-content {
+  padding: 1px 0;
+}
+
+.footer-content p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #888;
+  letter-spacing: 0.05em;
+}
+
+body {
+  padding-bottom: 24px;
+  /* Prevent content from being hidden behind fixed footer */
+}
+
+/* ═══════════════════════════════════════════════════════
    FLOATING ACTION BUTTONS
 ═══════════════════════════════════════════════════════ */
 .download-cv-btn {
   position: fixed;
-  bottom: 28px;
-  right: 88px; /* Placed left of the back-to-top button */
+  bottom: 35px;
+  /* Moved up to clear fixed footer */
+  right: 88px;
+  /* Placed left of the back-to-top button */
   height: 46px;
   padding: 0 1.2rem;
   color: var(--primary-color);
-  border-radius: 23px; /* Pill shape */
+  border-radius: 23px;
+  /* Pill shape */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1081,7 +1127,8 @@ section::before {
 .download-cv-btn::before {
   content: '';
   position: absolute;
-  inset: -2px; /* Border thickness */
+  inset: -2px;
+  /* Border thickness */
   border-radius: 25px;
   background: linear-gradient(90deg, transparent, var(--primary-color), var(--gradient-mid), transparent, var(--primary-color));
   background-size: 200% 100%;
@@ -1094,20 +1141,27 @@ section::before {
   position: absolute;
   inset: 0;
   border-radius: 23px;
-  background: rgba(10, 15, 20, 0.95); /* Dark center to hide inner gradient */
+  background: rgba(10, 15, 20, 0.95);
+  /* Dark center to hide inner gradient */
   backdrop-filter: blur(8px);
   z-index: -1;
   transition: background 0.3s ease;
 }
 
 .download-cv-btn * {
-  z-index: 1; /* Make sure text and icon are above the background */
+  z-index: 1;
+  /* Make sure text and icon are above the background */
   position: relative;
 }
 
 @keyframes lightningBorder {
-  0% { background-position: 200% 0; }
-  100% { background-position: 0% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: 0% 0;
+  }
 }
 
 .download-cv-btn:hover {
@@ -1119,11 +1173,13 @@ section::before {
 .download-cv-btn:hover::before {
   background: linear-gradient(90deg, var(--primary-color), var(--gradient-mid), var(--gradient-end), var(--primary-color));
   background-size: 300% 100%;
-  animation: lightningBorder 1s linear infinite; /* Speeds up on hover */
+  animation: lightningBorder 1s linear infinite;
+  /* Speeds up on hover */
 }
 
 .download-cv-btn:hover::after {
-  background: rgba(0, 255, 157, 0.15); /* Lights up the center slightly on hover */
+  background: rgba(0, 255, 157, 0.15);
+  /* Lights up the center slightly on hover */
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -1131,7 +1187,7 @@ section::before {
 ═══════════════════════════════════════════════════════ */
 .back-to-top {
   position: fixed;
-  bottom: 28px;
+  bottom: 35px;
   right: 28px;
   width: 46px;
   height: 46px;
