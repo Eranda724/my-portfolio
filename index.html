@@ -62,12 +62,12 @@
         <div id="visitor-counter" title="Total profile views" style="
           display: flex;
           align-items: center;
-          gap: 6px;
+          gap: 5px;
           background: rgba(255,255,255,0.07);
           border: 1px solid rgba(255,255,255,0.12);
           border-radius: 999px;
-          padding: 4px 12px 4px 8px;
-          font-size: 12px;
+          padding: 3px 10px;
+          font-size: 11px;
           font-weight: 600;
           color: rgba(255,255,255,0.8);
           letter-spacing: 0.03em;
@@ -75,18 +75,24 @@
           cursor: default;
           user-select: none;
           transition: all 0.3s ease;
-          margin-right: 8px;
+          margin-right: 6px;
+          white-space: nowrap;
         ">
-          <span style="
-            width: 7px; height: 7px;
-            border-radius: 50%;
-            background: #4ade80;
-            box-shadow: 0 0 6px #4ade80;
-            display: inline-block;
-            animation: pulse-dot 2s infinite;
-          "></span>
-          <i class="fas fa-eye" style="font-size:10px;opacity:0.7;"></i>
-          <span id="visitor-count" style="min-width:24px;text-align:center;">…</span>
+          <i class="fas fa-eye" style="font-size:10px;opacity:0.6;"></i>
+          <span id="visitor-count" style="min-width:20px;text-align:center;">…</span>
+        </div>
+
+        <!-- Social Links -->
+        <div class="nav-social-links">
+          <a href="https://linkedin.com/in/eranda-jayasinghe" target="_blank" rel="noopener" class="nav-social-btn" id="nav-linkedin" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://github.com/Eranda724" target="_blank" rel="noopener" class="nav-social-btn" id="nav-github" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="mailto:erandajayasinghe724@gmail.com" class="nav-social-btn" id="nav-gmail" title="Gmail">
+            <i class="fas fa-envelope"></i>
+          </a>
         </div>
 
         <!-- Mobile Button -->
@@ -1142,6 +1148,41 @@
     .contact-send-btn:disabled { opacity:.6; cursor:not-allowed; }
     @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
     #visitor-counter:hover { background:rgba(255,255,255,.12)!important; border-color:rgba(255,255,255,.22)!important; }
+
+    /* ── Nav social buttons ── */
+    .nav-social-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-right: 8px;
+    }
+    .nav-social-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.75);
+      font-size: 13px;
+      text-decoration: none;
+      transition: transform 0.2s ease, background 0.25s ease, box-shadow 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+      backdrop-filter: blur(6px);
+      flex-shrink: 0;
+    }
+    .nav-social-btn:hover { transform: translateY(-2px) scale(1.1); }
+    #nav-linkedin       { color: #0A66C2; }
+    #nav-linkedin:hover { background: rgba(10,102,194,0.2); border-color: rgba(10,102,194,0.5); box-shadow: 0 4px 18px rgba(10,102,194,0.45); color: #2d8cff; }
+    #nav-github         { color: #e6edf3; }
+    #nav-github:hover   { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.35); box-shadow: 0 4px 18px rgba(255,255,255,0.18); color: #fff; }
+    #nav-gmail          { color: #EA4335; }
+    #nav-gmail:hover    { background: rgba(234,67,53,0.2);   border-color: rgba(234,67,53,0.5);   box-shadow: 0 4px 18px rgba(234,67,53,0.45); color: #ff6b5e; }
+    @media (max-width: 480px) {
+      .nav-social-btn { width: 28px; height: 28px; font-size: 11px; }
+      .nav-social-links { gap: 4px; margin-right: 6px; }
+    }
   </style>
 
   <script>
