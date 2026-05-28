@@ -256,8 +256,8 @@ section::before {
   }
 
   .hero-bg-text--reverse {
-    top: 24rem;
-    /* Pulled up closer to the smaller profile picture on mobile */
+    top: 28rem;
+    /* Moved further down to avoid overlapping the profile on mobile */
   }
 }
 
