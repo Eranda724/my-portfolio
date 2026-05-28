@@ -58,6 +58,37 @@
           </div>
         </div>
 
+        <!-- Visitor Counter -->
+        <div id="visitor-counter" title="Total profile views" style="
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          background: rgba(255,255,255,0.07);
+          border: 1px solid rgba(255,255,255,0.12);
+          border-radius: 999px;
+          padding: 4px 12px 4px 8px;
+          font-size: 12px;
+          font-weight: 600;
+          color: rgba(255,255,255,0.8);
+          letter-spacing: 0.03em;
+          backdrop-filter: blur(8px);
+          cursor: default;
+          user-select: none;
+          transition: all 0.3s ease;
+          margin-right: 8px;
+        ">
+          <span style="
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: #4ade80;
+            box-shadow: 0 0 6px #4ade80;
+            display: inline-block;
+            animation: pulse-dot 2s infinite;
+          "></span>
+          <i class="fas fa-eye" style="font-size:10px;opacity:0.7;"></i>
+          <span id="visitor-count" style="min-width:24px;text-align:center;">…</span>
+        </div>
+
         <!-- Mobile Button -->
         <div class="lg:hidden">
           <button class="mobile-menu-button p-2 rounded-lg text-white focus:outline-none">
@@ -925,19 +956,72 @@
        CONTACT
   ═══════════════════════════════════════════════════════ -->
   <section id="contact" class="py-20 bg-black bg-opacity-60">
-    <div class="max-w-4xl mx-auto px-6">
+    <div class="max-w-5xl mx-auto px-6">
       <h2 class="section-title" data-aos="fade-up">Contact Me</h2>
 
+      <!-- ── Message Form ── -->
       <div class="card card-3d mb-8" data-aos="fade-up" data-aos-delay="100">
-        <h3 class="text-lg font-bold mb-3" style="color:var(--primary-color)">Professional Summary</h3>
-        <p class="text-gray-300 leading-relaxed">
-          I'm passionate about building real-world AI solutions using NLP, Generative AI, and LLMs. I also build
-          production-ready Flutter mobile apps with Firebase backends. With a Computer Engineering background and
-          hands-on project experience, my goal is to work as an ML Engineer or Generative AI Specialist — contributing
-          to impactful, ethical AI products.
-        </p>
+        <h3 class="text-lg font-bold mb-6 flex items-center gap-2" style="color:var(--primary-color)">
+          <i class="fas fa-paper-plane"></i> Send Me a Message
+        </h3>
+
+        <form id="contact-form" novalidate>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <!-- Name -->
+            <div class="contact-field-group">
+              <label for="cf-name" class="contact-label">Your Name <span style="color:#f87171">*</span></label>
+              <div class="contact-input-wrap">
+                <i class="fas fa-user contact-field-icon"></i>
+                <input id="cf-name" name="from_name" type="text" placeholder="John Doe"
+                  class="contact-input" required>
+              </div>
+            </div>
+            <!-- Email -->
+            <div class="contact-field-group">
+              <label for="cf-email" class="contact-label">Your Email <span style="color:#f87171">*</span></label>
+              <div class="contact-input-wrap">
+                <i class="fas fa-envelope contact-field-icon"></i>
+                <input id="cf-email" name="from_email" type="email" placeholder="john@example.com"
+                  class="contact-input" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Subject -->
+          <div class="contact-field-group mb-4">
+            <label for="cf-subject" class="contact-label">Subject</label>
+            <div class="contact-input-wrap">
+              <i class="fas fa-tag contact-field-icon"></i>
+              <input id="cf-subject" name="subject" type="text" placeholder="Opportunity / Collaboration / Question"
+                class="contact-input">
+            </div>
+          </div>
+
+          <!-- Message -->
+          <div class="contact-field-group mb-6">
+            <label for="cf-message" class="contact-label">Message <span style="color:#f87171">*</span></label>
+            <div class="contact-input-wrap" style="align-items:flex-start">
+              <i class="fas fa-comment-dots contact-field-icon" style="margin-top:14px"></i>
+              <textarea id="cf-message" name="message" rows="5"
+                placeholder="Hi Eranda, I'd like to discuss…"
+                class="contact-input contact-textarea" required></textarea>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" id="cf-submit" class="contact-send-btn">
+            <span id="cf-btn-text"><i class="fas fa-paper-plane mr-2"></i>Send Message</span>
+            <span id="cf-btn-spinner" style="display:none">
+              <i class="fas fa-circle-notch fa-spin mr-2"></i>Sending…
+            </span>
+          </button>
+
+          <!-- Status -->
+          <div id="cf-status" style="margin-top:14px;display:none;padding:10px 16px;border-radius:8px;font-size:14px;font-weight:600;"></div>
+        </form>
       </div>
 
+      <!-- ── Contact Info Cards ── -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="card card-3d" data-aos="fade-up" data-aos-delay="200">
           <h3 class="text-lg font-bold mb-6" style="color:var(--primary-color)">Get in Touch</h3>
@@ -1042,6 +1126,83 @@
   </script>
 
   <script src="script.js"></script>
-</body>
 
+  <style>
+    .contact-field-group { display:flex; flex-direction:column; gap:6px; }
+    .contact-label { font-size:12px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:rgba(255,255,255,.55); }
+    .contact-input-wrap { display:flex; align-items:center; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); border-radius:10px; transition:border-color .25s,background .25s; }
+    .contact-input-wrap:focus-within { border-color:var(--primary-color); background:rgba(0,255,157,.04); box-shadow:0 0 0 3px rgba(0,255,157,.08); }
+    .contact-field-icon { padding:0 12px; font-size:13px; color:var(--primary-color); opacity:.7; flex-shrink:0; }
+    .contact-input { flex:1; background:transparent; border:none; outline:none; color:#e2e8f0; font-size:14px; padding:11px 12px 11px 0; font-family:inherit; width:100%; }
+    .contact-input::placeholder { color:rgba(255,255,255,.25); }
+    .contact-textarea { resize:vertical; min-height:120px; }
+    .contact-send-btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 28px; border-radius:10px; border:none; cursor:pointer; font-size:14px; font-weight:700; font-family:inherit; letter-spacing:.03em; background:linear-gradient(135deg,var(--primary-color),#00c9ff); color:#0a0a0a; transition:transform .2s,box-shadow .2s,opacity .2s; box-shadow:0 4px 20px rgba(0,255,157,.25); }
+    .contact-send-btn:hover:not(:disabled) { transform:translateY(-2px); box-shadow:0 8px 28px rgba(0,255,157,.35); }
+    .contact-send-btn:active:not(:disabled) { transform:translateY(0); }
+    .contact-send-btn:disabled { opacity:.6; cursor:not-allowed; }
+    @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
+    #visitor-counter:hover { background:rgba(255,255,255,.12)!important; border-color:rgba(255,255,255,.22)!important; }
+  </style>
+
+  <script>
+    /* ── Contact form: mailto (no API needed) ── */
+    (function () {
+      const form      = document.getElementById('contact-form');
+      const submitBtn = document.getElementById('cf-submit');
+      const btnText   = document.getElementById('cf-btn-text');
+      const btnSpin   = document.getElementById('cf-btn-spinner');
+      const status    = document.getElementById('cf-status');
+
+      function showStatus(msg, ok) {
+        status.textContent      = msg;
+        status.style.display    = 'block';
+        status.style.background = ok ? 'rgba(74,222,128,.12)' : 'rgba(248,113,113,.12)';
+        status.style.color      = ok ? '#4ade80' : '#f87171';
+        status.style.border     = ok ? '1px solid rgba(74,222,128,.3)' : '1px solid rgba(248,113,113,.3)';
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name    = document.getElementById('cf-name').value.trim();
+        const email   = document.getElementById('cf-email').value.trim();
+        const subject = document.getElementById('cf-subject').value.trim();
+        const message = document.getElementById('cf-message').value.trim();
+
+        if (!name || !email || !message) { showStatus('⚠️  Please fill in your name, email, and message.', false); return; }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showStatus('⚠️  Please enter a valid email address.', false); return; }
+
+        submitBtn.disabled = true;
+        btnText.style.display = 'none';
+        btnSpin.style.display = 'inline-flex';
+        status.style.display  = 'none';
+
+        const sub  = encodeURIComponent(subject || `Portfolio message from ${name}`);
+        const body = encodeURIComponent(`Hi Eranda,\n\n${message}\n\n---\nFrom : ${name}\nEmail: ${email}`);
+        window.location.href = `mailto:erandajayasinghe724@gmail.com?subject=${sub}&body=${body}`;
+
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          btnText.style.display = 'inline-flex';
+          btnSpin.style.display = 'none';
+          showStatus('📧  Your email app opened — just click Send there!', true);
+          form.reset();
+        }, 1200);
+      });
+    })();
+
+    /* ── Visitor counter ── */
+    (function () {
+      const el = document.getElementById('visitor-count');
+      fetch('https://api.countapi.xyz/hit/eranda-dev-portfolio/page-views-v1')
+        .then(r => r.json())
+        .then(d => { el.textContent = (d && d.value != null) ? d.value.toLocaleString() : '–'; })
+        .catch(() => {
+          let n = parseInt(localStorage.getItem('portfo_views') || '0', 10) + 1;
+          localStorage.setItem('portfo_views', n);
+          el.textContent = n.toLocaleString();
+        });
+    })();
+  </script>
+
+</body>
 </html>
