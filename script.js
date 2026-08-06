@@ -117,15 +117,21 @@ document.addEventListener('DOMContentLoaded', function () {
       cursorY = e.clientY;
     });
 
-    (function animateCursor() {
-      cursor.style.left = `${cursorX}px`;
-      cursor.style.top = `${cursorY}px`;
-      followerX += (cursorX - followerX) * 0.12;
-      followerY += (cursorY - followerY) * 0.12;
-      follower.style.left = `${followerX}px`;
-      follower.style.top = `${followerY}px`;
+    // Framerate-normalised lerp: same feel at 60 Hz, 120 Hz or 144 Hz
+    // Uses transform (not left/top) — transform only triggers composite,
+    // while left/top triggers layout every frame and disturbs other GPU layers.
+    let lastCursorTs = 0;
+    (function animateCursor(ts) {
+      const dt = lastCursorTs ? Math.min(ts - lastCursorTs, 50) : 16.67;
+      lastCursorTs = ts;
+      const lf = 1 - Math.pow(1 - 0.12, dt / 16.67);
+      // Offset by half the element size so the centre aligns with the pointer
+      cursor.style.transform   = `translate(${cursorX - 7}px, ${cursorY - 7}px)`;
+      followerX += (cursorX - followerX) * lf;
+      followerY += (cursorY - followerY) * lf;
+      follower.style.transform = `translate(${followerX - 17}px, ${followerY - 17}px)`;
       requestAnimationFrame(animateCursor);
-    })();
+    })(0);
 
     document.querySelectorAll('a, button, .project-card, .skill-icon').forEach(el => {
       el.addEventListener('mouseenter', () => {
@@ -155,12 +161,16 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     btn.addEventListener('mouseleave', () => { targetX = 0; targetY = 0; });
 
-    (function tick() {
-      currentX += (targetX - currentX) * 0.15;
-      currentY += (targetY - currentY) * 0.15;
+    let lastMagTs = 0;
+    (function tick(ts) {
+      const dt = lastMagTs ? Math.min(ts - lastMagTs, 50) : 16.67;
+      lastMagTs = ts;
+      const lf = 1 - Math.pow(1 - 0.15, dt / 16.67);
+      currentX += (targetX - currentX) * lf;
+      currentY += (targetY - currentY) * lf;
       btn.style.transform = `translate(${currentX}px, ${currentY}px)`;
       requestAnimationFrame(tick);
-    })();
+    })(0);
   });
 
   // =========================================================================
@@ -213,17 +223,19 @@ document.addEventListener('DOMContentLoaded', function () {
   // =========================================================================
   document.querySelectorAll('.counter').forEach(counter => {
     const target = +counter.getAttribute('data-target');
+    const DURATION = 2000; // always 2 s regardless of refresh rate
     const counterObserver = new IntersectionObserver(
       entries => {
         if (!entries[0].isIntersecting) return;
         counterObserver.unobserve(counter);
-        let start = 0;
-        const step = target / 120;
-        (function count() {
-          start = Math.min(start + step, target);
-          counter.textContent = Math.ceil(start);
-          if (start < target) requestAnimationFrame(count);
-        })();
+        let startTs = null;
+        (function count(ts) {
+          if (!startTs) startTs = ts;
+          const progress = Math.min((ts - startTs) / DURATION, 1);
+          const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+          counter.textContent = Math.ceil(eased * target);
+          if (progress < 1) requestAnimationFrame(count);
+        })(performance.now());
       },
       { threshold: 0.3 }
     );
@@ -234,8 +246,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // MOBILE MENU
   // =========================================================================
   const mobileMenuButton = document.querySelector('.mobile-menu-button');
-  const mobileMenuClose  = document.querySelector('.mobile-menu-close');
-  const mobileMenu       = document.querySelector('.mobile-menu');
+  const mobileMenuClose = document.querySelector('.mobile-menu-close');
+  const mobileMenu = document.querySelector('.mobile-menu');
   const mobileMenuBackdrop = document.querySelector('.mobile-menu-backdrop');
 
   if (mobileMenuButton && mobileMenuClose && mobileMenu) {
@@ -281,13 +293,13 @@ document.addEventListener('DOMContentLoaded', function () {
   // =========================================================================
   // ACCORDION
   // =========================================================================
-  window.toggleAccordion = function(button) {
+  window.toggleAccordion = function (button) {
     const content = button.nextElementSibling;
     const icon = button.querySelector('.fa-chevron-down');
     const container = button.closest('.space-y-3') || button.closest('.space-y-4');
     const allContents = container ? container.querySelectorAll('.accordion-content') : [];
-    const allIcons    = container ? container.querySelectorAll('.fa-chevron-down') : [];
-    const isOpening   = !content.classList.contains('open');
+    const allIcons = container ? container.querySelectorAll('.fa-chevron-down') : [];
+    const isOpening = !content.classList.contains('open');
     allContents.forEach(c => c.classList.remove('open'));
     allIcons.forEach(i => i.classList.remove('rotate-180'));
     if (isOpening) {
@@ -367,7 +379,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // PROJECT FILTERING
   // =========================================================================
   const filterButtons = document.querySelectorAll('.filter-btn');
-  const projectItems  = document.querySelectorAll('.project-item');
+  const projectItems = document.querySelectorAll('.project-item');
   filterButtons.forEach(button => {
     button.addEventListener('click', () => {
       filterButtons.forEach(btn => {
@@ -398,7 +410,7 @@ document.addEventListener('DOMContentLoaded', function () {
       confetti.className = 'confetti';
       confetti.style.left = Math.random() * 100 + 'vw';
       confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-      confetti.style.width  = Math.random() * 10 + 5 + 'px';
+      confetti.style.width = Math.random() * 10 + 5 + 'px';
       confetti.style.height = Math.random() * 10 + 5 + 'px';
       confetti.style.animationDelay = Math.random() * 3 + 's';
       document.body.appendChild(confetti);
@@ -406,5 +418,57 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
   setTimeout(createConfetti, 3000);
+
+  // =========================================================================
+  // MARQUEE — JS-driven at constant 60 px/s (fixes desktop speed issue)
+  //
+  // The CSS `translateX(-50%)` approach makes speed proportional to the
+  // element's pixel width. On desktop the font is 8rem → element ~4× wider
+  // than on mobile (3rem) → scrolls 4× faster. No CSS duration value fixes
+  // this because the distance itself changes with viewport width.
+  //
+  // Solution: kill the CSS animation on window.load and drive every frame
+  // with a real elapsed-time delta so speed is always exactly 60 px/s.
+  // =========================================================================
+  window.addEventListener('load', function () {
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        document.querySelectorAll('.hero-bg-text').forEach(function (el, idx) {
+          el.style.animation = 'none';     // hand control to JS
+          el.style.transform  = 'translateX(0)';
+
+          var SPEED = idx === 0 ? 60 : 48; // px/s — row 1 slightly slower
+          var dir   = idx === 0 ? -1 : 1;  // row 0 left, row 1 right
+          var pos   = 0;
+          var lastT = null;
+          var initialized = false;
+
+          function tick(ts) {
+            if (!lastT) lastT = ts;
+            var dt     = Math.min(ts - lastT, 50);
+            lastT      = ts;
+            var halfPx = el.scrollWidth / 2;
+
+            // Set starting position for reverse row once we know halfPx
+            if (!initialized) {
+              if (dir === 1) pos = -halfPx;
+              initialized = true;
+            }
+
+            pos += dir * SPEED * (dt / 1000);
+
+            // Seamless loop boundary
+            if (dir === -1 && pos <= -halfPx) pos += halfPx;
+            if (dir ===  1 && pos >= 0)       pos -= halfPx;
+
+            el.style.transform = 'translateX(' + pos.toFixed(2) + 'px)';
+            requestAnimationFrame(tick);
+          }
+
+          requestAnimationFrame(tick);
+        });
+      });
+    });
+  });
 
 });
