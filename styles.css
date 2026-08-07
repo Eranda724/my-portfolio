@@ -291,18 +291,9 @@ section::before {
         the same element → fixed by isolating transforms
 ═══════════════════════════════════════════════════════ */
 
-/* Outer floating wrapper — only responsible for the
-   gentle bob. No hover state here to avoid conflicts. */
 .floating {
-  animation: floatAnim 6s ease-in-out infinite;
-  will-change: transform;
-  /* Dedicated GPU layer — prevents marquee rAF recomposites from
-     disturbing the float animation (backface-visibility forces own layer) */
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform: translateZ(0);
-  isolation: isolate;
   position: relative;
+  isolation: isolate;
 }
 
 .floating::after {
@@ -312,10 +303,6 @@ section::before {
   z-index: -1;
 }
 
-/* Pause bob when user hovers anywhere inside the block */
-.floating:hover {
-  animation-play-state: paused;
-}
 
 .profile-image-container {
   position: relative;
@@ -326,7 +313,6 @@ section::before {
   padding: 30px;
 }
 
-/* Hover lift lives ONLY on this inner container */
 .profile-hover {
   transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
     box-shadow 0.4s ease;
@@ -358,34 +344,11 @@ section::before {
   z-index: 1;
   pointer-events: none;
   animation: pulseGlow 4s ease-in-out infinite;
-  will-change: opacity, transform;
 }
 
 @keyframes pulseGlow {
-
-  0%,
-  100% {
-    opacity: 0.18;
-    transform: scale(1);
-  }
-
-  50% {
-    opacity: 0.30;
-    transform: scale(1.06);
-  }
-}
-
-@keyframes floatAnim {
-  0%,
-  100% {
-    /* translate3d keeps the element on the GPU layer throughout the animation,
-       preventing sub-pixel jitter that occurs with plain translateY */
-    transform: translate3d(0, 0, 0);
-  }
-
-  50% {
-    transform: translate3d(0, -14px, 0);
-  }
+  0%, 100% { opacity: 0.18; }
+  50%       { opacity: 0.28; }
 }
 
 /* ── Name overlay — stable, no more glitching ─────────
@@ -1383,4 +1346,46 @@ body {
 .reduce-motion *::after {
   animation-duration: 0.01ms !important;
   transition-duration: 0.01ms !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   HARD STOP — profile / avatar area glitch prevention
+   All profile-related children are locked down.
+   The .floating bob animation itself is kept (see above)
+   but every child element is fully stabilised.
+═══════════════════════════════════════════════════════ */
+
+/* Children of .floating must NOT animate transform —
+   that belongs only to the parent floatAnim */
+.floating .profile-image-container,
+.floating .profile-image-container *,
+.floating .profile-hover,
+.floating .profile-image,
+.floating .name-overlay,
+.floating .name-overlay *,
+.floating .hero-title {
+  animation: none !important;
+  will-change: auto !important;
+}
+
+/* Freeze the glowing background blob — opacity only is allowed
+   via the pulseGlow keyframe above; transform must not move */
+.profile-bg {
+  transform: none !important;
+}
+
+/* Pseudo-elements on profile containers must not animate */
+.floating::before,
+.profile-image-container::before,
+.profile-image-container::after {
+  animation: none !important;
+  transform: none !important;
+}
+
+/* Ensure the profile image itself is always a fixed, stable size */
+.profile-image {
+  display: block !important;
+  width: 250px !important;
+  height: 250px !important;
+  object-fit: cover !important;
 }
