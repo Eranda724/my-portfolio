@@ -16,6 +16,10 @@
   --transition-fast: 0.15s;
   --transition-med: 0.28s;
   --transition-slow: 0.45s;
+  /* Spring easing — feels physical, not mechanical */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-smooth: cubic-bezier(0.65, 0, 0.35, 1);
   --font-heading: 'Outfit', sans-serif;
   --font-body: 'DM Sans', sans-serif;
   --fs-h2: clamp(1.6rem, 3vw, 2.2rem);
@@ -40,6 +44,12 @@ html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: var(--primary-color) var(--background-darker);
+}
+
+/* ── Smooth anchor offset — prevents fixed nav from covering content ── */
+section[id],
+header[id] {
+  scroll-margin-top: 80px;
 }
 
 ::-webkit-scrollbar {
@@ -347,8 +357,15 @@ section::before {
 }
 
 @keyframes pulseGlow {
-  0%, 100% { opacity: 0.18; }
-  50%       { opacity: 0.28; }
+
+  0%,
+  100% {
+    opacity: 0.18;
+  }
+
+  50% {
+    opacity: 0.28;
+  }
 }
 
 /* ── Name overlay — stable, no more glitching ─────────
@@ -417,17 +434,33 @@ section::before {
 /* ═══════════════════════════════════════════════════════
    NAVIGATION
 ═══════════════════════════════════════════════════════ */
+/* ── Nav slide-in entry animation (fires once on page load) ── */
+@keyframes navSlideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .nav-container {
   background: rgba(5, 5, 5, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  transition: all var(--transition-med) ease;
+  transition: background var(--transition-med) ease,
+              box-shadow var(--transition-med) ease,
+              border-color var(--transition-med) ease;
+  animation: navSlideDown 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .nav-container.scrolled {
   background: rgba(5, 5, 5, 0.97);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  border-bottom-color: rgba(0, 255, 157, 0.1);
 }
 
 .logo-text {
@@ -454,8 +487,11 @@ section::before {
   font-size: 0.88rem;
   font-weight: 600;
   border-radius: 8px;
-  transition: all var(--transition-med) ease;
+  transition: color 0.25s var(--ease-out-expo),
+              background 0.25s var(--ease-out-expo),
+              transform 0.3s var(--ease-spring);
   position: relative;
+  will-change: transform;
 }
 
 .nav-link::after {
@@ -467,12 +503,14 @@ section::before {
   width: 0;
   height: 2px;
   background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
-  transition: width var(--transition-med) ease;
-  border-radius: 1px;
+  transition: width 0.35s var(--ease-spring);
+  border-radius: 2px;
+  box-shadow: 0 0 6px rgba(0, 255, 157, 0.5);
 }
 
 .nav-link:hover {
   color: var(--primary-color) !important;
+  transform: translateY(-1px);
 }
 
 .nav-link:hover::after,
@@ -483,6 +521,12 @@ section::before {
 .nav-link.active {
   color: var(--primary-color) !important;
   background: rgba(0, 255, 157, 0.08);
+  animation: navLinkPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes navLinkPulse {
+  0%, 100% { background: rgba(0, 255, 157, 0.08); }
+  50%       { background: rgba(0, 255, 157, 0.14); }
 }
 
 .nav-progress {
@@ -553,16 +597,18 @@ section::before {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  transition: all var(--transition-med) ease;
+  transition: transform 0.35s var(--ease-spring),
+              box-shadow 0.35s var(--ease-out-expo);
+  will-change: transform;
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(0, 255, 157, 0.28);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 14px 32px rgba(0, 255, 157, 0.35);
 }
 
 .glow-on-hover:hover {
-  box-shadow: 0 0 30px rgba(0, 255, 157, 0.45) !important;
+  box-shadow: 0 0 36px rgba(0, 255, 157, 0.5) !important;
   transform: scale(1.05);
 }
 
@@ -576,10 +622,13 @@ section::before {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  transition: all var(--transition-med) ease;
+  transition: color 0.3s ease,
+              transform 0.35s var(--ease-spring),
+              box-shadow 0.35s var(--ease-out-expo);
   position: relative;
   overflow: hidden;
   z-index: 1;
+  will-change: transform;
 }
 
 .btn-outline::before {
@@ -589,12 +638,14 @@ section::before {
   background: var(--primary-color);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform var(--transition-med) ease;
+  transition: transform 0.4s var(--ease-out-expo);
   z-index: -1;
 }
 
 .btn-outline:hover {
   color: var(--background-dark);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(0, 255, 157, 0.25);
 }
 
 .btn-outline:hover::before {
@@ -602,7 +653,7 @@ section::before {
 }
 
 .magnetic-btn {
-  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 0.4s var(--ease-spring);
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -619,22 +670,25 @@ section::before {
 }
 
 .card:hover {
-  border-color: rgba(0, 255, 157, 0.28);
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 255, 157, 0.06);
+  border-color: rgba(0, 255, 157, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35),
+              0 0 28px rgba(0, 255, 157, 0.08);
 }
 
 .card-3d {
-  perspective: 1000px;
+  perspective: 1200px;
   transform-style: preserve-3d;
-  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
-    box-shadow 0.4s ease,
-    border-color 0.3s ease;
+  transition: transform 0.5s var(--ease-spring),
+              box-shadow 0.5s var(--ease-out-expo),
+              border-color 0.35s ease;
+  will-change: transform;
 }
 
 .card-3d:hover {
-  transform: translateY(-5px) rotateX(1.5deg) rotateY(1.5deg);
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35), 0 0 24px rgba(0, 255, 157, 0.07);
+  transform: translateY(-7px) rotateX(2deg) rotateY(1.5deg);
+  box-shadow: 0 28px 56px rgba(0, 0, 0, 0.4),
+              0 0 32px rgba(0, 255, 157, 0.1);
 }
 
 .project-card {
@@ -647,9 +701,10 @@ section::before {
 }
 
 .project-card:hover {
-  transform: translateY(-8px) scale(1.01);
-  border-color: rgba(0, 255, 157, 0.28);
-  box-shadow: 0 28px 56px rgba(0, 0, 0, 0.4), 0 0 28px rgba(0, 255, 157, 0.07);
+  transform: translateY(-10px) scale(1.015);
+  border-color: rgba(0, 255, 157, 0.32);
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.45),
+              0 0 36px rgba(0, 255, 157, 0.1);
 }
 
 .project-card::after {
@@ -716,11 +771,14 @@ section::before {
   border-radius: 12px;
   position: relative;
   overflow: hidden;
-  transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 0.4s var(--ease-spring),
+              box-shadow 0.4s var(--ease-out-expo),
+              border-color 0.3s ease;
   cursor: default;
+  will-change: transform;
 }
 
-.skill-icon>* {
+.skill-icon > * {
   position: relative;
   z-index: 1;
 }
@@ -731,17 +789,18 @@ section::before {
   inset: 0;
   background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
   opacity: 0;
-  transition: opacity var(--transition-med) ease;
+  transition: opacity 0.4s var(--ease-out-expo);
 }
 
 .skill-icon:hover {
-  transform: translateY(-5px) scale(1.04);
+  transform: translateY(-7px) scale(1.06);
   border-color: var(--primary-color);
-  box-shadow: 0 14px 30px rgba(0, 255, 157, 0.14);
+  box-shadow: 0 18px 36px rgba(0, 255, 157, 0.18),
+              0 0 0 1px rgba(0, 255, 157, 0.3);
 }
 
 .skill-icon:hover::before {
-  opacity: 0.88;
+  opacity: 0.9;
 }
 
 .skill-icon:hover i,
@@ -750,9 +809,10 @@ section::before {
   -webkit-text-fill-color: var(--background-dark) !important;
 }
 
-.skill-icon:hover .fas {
-  transform: rotate(360deg);
-  transition: transform 0.6s ease;
+.skill-icon:hover .fas,
+.skill-icon:hover .fab {
+  transform: rotate(360deg) scale(1.15);
+  transition: transform 0.65s var(--ease-spring);
 }
 
 .skill-circle {
@@ -774,6 +834,15 @@ section::before {
   border-radius: 20px;
   font-size: 0.72rem;
   font-weight: 600;
+  transition: transform 0.3s var(--ease-spring),
+              background 0.25s ease,
+              box-shadow 0.3s ease;
+}
+
+.tech-tag:hover {
+  transform: translateY(-2px) scale(1.05);
+  background: rgba(0, 255, 157, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 255, 157, 0.2);
 }
 
 .tool-tag {
@@ -785,13 +854,19 @@ section::before {
   border-radius: 20px;
   font-size: 0.82rem;
   font-weight: 500;
-  transition: all var(--transition-fast) ease;
+  transition: transform 0.3s var(--ease-spring),
+              background 0.25s ease,
+              color 0.25s ease,
+              border-color 0.25s ease,
+              box-shadow 0.3s ease;
 }
 
 .tool-tag:hover {
   background: rgba(0, 255, 157, 0.08);
-  border-color: rgba(0, 255, 157, 0.2);
+  border-color: rgba(0, 255, 157, 0.25);
   color: var(--primary-color);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 255, 157, 0.15);
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -802,11 +877,15 @@ section::before {
   border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 10px;
   overflow: hidden;
-  transition: border-color var(--transition-med) ease;
+  transition: border-color 0.35s ease,
+              box-shadow 0.35s ease,
+              transform 0.35s var(--ease-spring);
 }
 
 .accordion-item:hover {
-  border-color: rgba(0, 255, 157, 0.2);
+  border-color: rgba(0, 255, 157, 0.25);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25),
+              0 0 0 1px rgba(0, 255, 157, 0.08);
 }
 
 .accordion-btn {
@@ -830,15 +909,20 @@ section::before {
   color: var(--text-muted);
   font-size: 0.85rem;
   flex-shrink: 0;
-  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.45s var(--ease-spring),
+              color 0.25s ease;
+}
+
+.accordion-item:hover .accordion-chevron {
+  color: var(--primary-color);
 }
 
 .accordion-content {
   max-height: 0;
   opacity: 0;
   overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-    opacity 0.4s ease;
+  transition: max-height 0.5s var(--ease-out-expo),
+              opacity 0.45s ease;
 }
 
 .accordion-content.open {
@@ -910,35 +994,89 @@ section::before {
 ═══════════════════════════════════════════════════════ */
 .fade-in {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateY(22px) scale(0.98);
+  transition: opacity 0.65s var(--ease-out-expo),
+              transform 0.65s var(--ease-out-expo);
   will-change: opacity, transform;
 }
 
 .fade-in.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+}
+
+/* ── Scroll-reveal utilities (used by IntersectionObserver in script.js) ── */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(44px) scale(0.97);
+  transition: opacity 0.75s var(--ease-out-expo),
+              transform 0.75s var(--ease-spring);
+  will-change: opacity, transform;
+}
+
+.reveal-up.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-48px) scale(0.97);
+  transition: opacity 0.75s var(--ease-out-expo),
+              transform 0.75s var(--ease-spring);
+  will-change: opacity, transform;
+}
+
+.reveal-left.is-visible {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(48px) scale(0.97);
+  transition: opacity 0.75s var(--ease-out-expo),
+              transform 0.75s var(--ease-spring);
+  will-change: opacity, transform;
+}
+
+.reveal-right.is-visible {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+/* Card reveal — for .card / .project-card without data-aos */
+.card-reveal {
+  opacity: 0;
+  transform: translateY(36px) scale(0.97);
+  transition: opacity 0.7s var(--ease-out-expo),
+              transform 0.7s var(--ease-spring);
+  will-change: opacity, transform;
+}
+
+.card-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 .stagger-item {
   opacity: 0;
-  transform: translateY(18px);
+  transform: translateY(24px) scale(0.97);
   will-change: opacity, transform;
 }
 
 .stagger-item.visible {
-  animation: fadeInUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation: fadeInUp 0.55s var(--ease-spring) forwards;
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(24px) scale(0.97);
   }
-
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 

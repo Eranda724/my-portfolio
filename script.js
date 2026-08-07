@@ -1,13 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-  // ─── AOS INIT ─────────────────────────────────────────────────────────────
+  // ─── AOS INIT ──────────────────────────────────────────────────────
   if (typeof AOS !== 'undefined') {
     AOS.init({
-      duration: 600,
-      easing: 'ease-out-quart',
+      duration: 750,
+      easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
       once: true,
       mirror: false,
-      offset: 50,
+      offset: 80,
+      delay: 0,
+      anchorPlacement: 'top-bottom',
     });
   }
 
@@ -31,11 +33,18 @@ document.addEventListener('DOMContentLoaded', function () {
   const navLinks = document.querySelectorAll('.nav-link');
   const sections = document.querySelectorAll('section[id]');
 
+  // Get the nav height dynamically so the active-section logic is accurate
+  function getNavHeight() {
+    return nav ? nav.getBoundingClientRect().height : 80;
+  }
+
   function updateNavActive() {
     const scrollY = window.scrollY;
+    const navH = getNavHeight();
     let current = '';
     sections.forEach(section => {
-      if (scrollY >= section.offsetTop - 120) current = section.getAttribute('id');
+      const sectionTop = section.getBoundingClientRect().top + scrollY - navH - 10;
+      if (scrollY >= sectionTop) current = section.getAttribute('id');
     });
     navLinks.forEach(link => {
       link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
@@ -63,7 +72,24 @@ document.addEventListener('DOMContentLoaded', function () {
   updateNavActive();
 
   // =========================================================================
-  // FADE-IN
+  // SMOOTH SCROLL — intercept all anchor links so smooth-scroll always fires
+  // (CSS scroll-behavior is sometimes blocked by anchor jump behaviour)
+  // =========================================================================
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href').slice(1);
+      if (!targetId) return; // bare '#' — skip
+      const target = document.getElementById(targetId);
+      if (!target) return;
+      e.preventDefault();
+      const navH = getNavHeight();
+      const targetTop = target.getBoundingClientRect().top + window.scrollY - navH - 8;
+      window.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
+    });
+  });
+
+  // =========================================================================
+  // FADE-IN (existing .fade-in class)
   // =========================================================================
   const fadeObserver = new IntersectionObserver(
     entries => {
@@ -74,9 +100,30 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       });
     },
-    { threshold: 0.1 }
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
   );
   document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+
+  // =========================================================================
+  // REVEAL ANIMATIONS — .reveal-up / .reveal-left / .reveal-right / .card-reveal
+  // Automatically observed — add these classes to any element in HTML for
+  // a smooth scroll-triggered animation without needing data-aos.
+  // =========================================================================
+  const revealObserver = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Support optional stagger delay via data-reveal-delay
+          const delay = parseInt(entry.target.getAttribute('data-reveal-delay') || '0', 10);
+          setTimeout(() => entry.target.classList.add('is-visible'), delay);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.08, rootMargin: '0px 0px -50px 0px' }
+  );
+  document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right, .card-reveal')
+    .forEach(el => revealObserver.observe(el));
 
   // =========================================================================
   // STAGGER CONTAINERS
